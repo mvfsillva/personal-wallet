@@ -1,0 +1,6 @@
+{
+  "name": "circleci-personal-wallet-now-production",
+  "type": "npm",
+  "forwardNpm": true,
+  "alias": ["personal-wallet.now.sh"]
+}
