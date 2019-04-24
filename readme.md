@@ -1,3 +1,8 @@
+# Personal Wallet
+
+[![CircleCI](https://circleci.com/gh/mvfsillva/personal-wallet.svg?style=svg&circle-token=ae17684f8ec5bfb4a4da30adb4d1558a0266365b)](https://circleci.com/gh/mvfsillva/personal-wallet)
+
+---
 
 - React 16
 - Next 8
