@@ -83,7 +83,7 @@ jobs:
         - deploy:
             name: Deployment NOW
             command: |
-              now -t ${ZEIT_TOKEN}
+              now -t ${NOW_TOKEN}
 
 workflows:
   version: 2
