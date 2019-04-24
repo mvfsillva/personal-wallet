@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "xo --quiet",
     "lint:fix": "xo --quiet --write '**/*.js'",
+    "lint:css": "stylelint './components/**/*.js' './styles/**/*.js' './pages/**/*.js'",
     "test": "jest",
     "test:watch": "jest --watch",
     "precommit": "lint-staged"
@@ -37,6 +38,11 @@
     "jest": "^24.7.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-prettier": "^5.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.6.0",
     "xo": "^0.24.0"
   },
   "jest": {
@@ -76,6 +82,7 @@
   "lint-staged": {
     "*.js": [
       "yarn lint",
+      "yarn lint:css",
       "prettier --semi false --single-quote --print-width 100 --tab-width 2 --trailing-comma all --write",
       "git add"
     ]
