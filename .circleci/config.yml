@@ -84,12 +84,12 @@ jobs:
             name: Deployment NOW
             command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                now --token $ZEIT_TOKEN --local-config .now/now.production.json
-                now --token $ZEIT_TOKEN --local-config .now/now.production.json alias
+                now --token ${ZEIT_TOKEN} --local-config .now/now.production.json
+                now --token ${ZEIT_TOKEN} --local-config .now/now.production.json alias
               else
                 ./.now/now.feature.sh
-                now --token $ZEIT_TOKEN --local-config .now/now.feature.json
-                now --token $ZEIT_TOKEN --local-config .now/now.feature.json alias
+                now --token ${ZEIT_TOKEN} --local-config .now/now.feature.json
+                now --token ${ZEIT_TOKEN} --local-config .now/now.feature.json alias
               fi
 
 workflows:
