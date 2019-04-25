@@ -116,11 +116,11 @@ theme.font = {
     fontSize: b700,
     lineHeight: '16px',
     fontWeight: 500,
-  }
+  },
 }
 
 const primary = '#513AEF'
-const secondary = '#1A112E'
+const secondary = '#FF00A2'
 const black = '#000000'
 const white = '#FFFFFF'
 const gray = '#F6F6F6'
@@ -154,7 +154,7 @@ theme.colors = {
     light: lighten(0.1, gray),
     dark: darken(0.1, gray),
     darker: darken(0.2, gray),
-  })
+  }),
 }
 
 export default theme
