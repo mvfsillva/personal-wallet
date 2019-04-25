@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/react'
 import centered from '@storybook/addon-centered'
 
-const req = require.context('../', true, /.stories.js$/)
+const req = require.context('../components', true, /.stories.js$/)
 
 addDecorator(centered)
 
