@@ -83,6 +83,7 @@
       "import/no-unresolved": 0
     },
     "globals": [
+      "jest",
       "expect",
       "it",
       "describe"
