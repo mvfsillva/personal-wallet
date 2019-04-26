@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme'
 
 import Input from '.'
 
-const wrap = (props = {}) => shallow(<Input {...props} />)
+const wrap = (props = {}) => mount(<Input {...props} />)
 
 describe('[Component: Input]', () => {
   it('expected behavior', () => {
@@ -11,26 +11,26 @@ describe('[Component: Input]', () => {
     mount(<Input name="personal-wallet" disabled />)
     mount(<Input name="personal-wallet" required />)
     mount(<Input name="personal-wallet" placeholder="personal wallet" />)
+    mount(<Input name="personal-wallet" label="personal wallet" />)
   })
 
-  it('renders props when passed in', () => {
-    const wrapper = wrap({ type: 'text' })
-    expect(wrapper.find({ type: 'text' })).toHaveLength(1)
+  it('should render input with type prop', () => {
+    const input = type => wrap({ type })
+
+    expect(input('text').props().type).toBe('text')
+    expect(input('email').props().type).toBe('email')
+    expect(input('password').props().type).toBe('password')
+    expect(input('number').props().type).toBe('number')
   })
 
-  it('renders props when passed in', () => {
-    const wrapper = wrap({ size: 'medium' })
-    expect(wrapper.find({ size: 'medium' })).toHaveLength(1)
+  it('should render input label prop', () => {
+    const input = wrap({ label: 'Personal Wallet' })
+    expect(input.props().label).toEqual('Personal Wallet')
   })
 
-  it('renders props when passed in', () => {
-    const wrapper = wrap({ placeholder: 'personal wallet' })
-    expect(wrapper.find({ placeholder: 'personal wallet' })).toHaveLength(1)
-  })
-
-  it('should render name prop', () => {
-    const wrapper = mount(<Input name="Success!" />)
-    expect(wrapper.prop('name')).toEqual('Success!')
+  it('should render input error prop', () => {
+    const input = wrap({ error: 'error example' })
+    expect(input.props().error).toEqual('error example')
   })
 
   it('should render required', () => {
@@ -45,7 +45,7 @@ describe('[Component: Input]', () => {
 
   it('should register onChange call', () => {
     const fn = jest.fn()
-    const wrapper = wrap({ onChange: fn() })
+    const wrapper = shallow(<Input onChange={fn()} />)
 
     wrapper.simulate('input')
     expect(fn).toHaveBeenCalled()
