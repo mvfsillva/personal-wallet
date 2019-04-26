@@ -119,12 +119,12 @@ theme.font = {
   },
 }
 
-const primary = '#513AEF'
-const secondary = '#FF00A2'
+const primary = '#0DB14B'
+const secondary = '#2D3844'
+const gray = '#96A0AF'
 const black = '#000000'
 const white = '#FFFFFF'
-const gray = '#F6F6F6'
-const red = '#e15554'
+const red = '#E15554'
 
 theme.colors = {
   white,
