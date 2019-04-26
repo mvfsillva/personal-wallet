@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classnames from 'classnames'
+import { transitions } from 'polished'
 
 import theme from '../../theme'
+import { transition } from '../../mixins/transition'
 
 const Wrapper = styled.button`
   border: 1px solid transparent;
@@ -11,13 +13,19 @@ const Wrapper = styled.button`
   text-align: center;
   cursor: pointer;
   display: inline-block;
+  ${transitions([
+    transition({ property: 'background-color', duration: '0.5s' }),
+    transition({ property: 'border-color', duration: '0.5s' }),
+    transition({ property: 'color', duration: '0.5s', delay: '0.2s' }),
+  ])};
 
   &.primary {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
-    border-color: ${theme.colors.primary.dark};
+    border-color: ${theme.colors.primary};
     &:hover {
-      background-color: ${theme.colors.primary.dark};
+      background-color: ${theme.colors.primary.darker};
+      border-color: ${theme.colors.primary.darker};
     }
 
     &.outline {
@@ -37,7 +45,8 @@ const Wrapper = styled.button`
     color: ${theme.colors.white};
     border-color: ${theme.colors.secondary.dark};
     &:hover {
-      background-color: ${theme.colors.secondary.dark};
+      background-color: ${theme.colors.secondary.lighter};
+      border-color: ${theme.colors.secondary.lighter};
     }
 
     &.outline {
