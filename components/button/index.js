@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { transitions } from 'polished'
 
 import theme from '../../theme'
-import { transition } from '../../mixins/transition'
+import transition from '../../mixins/transition'
 
 const Wrapper = styled.button`
   border: 1px solid transparent;
