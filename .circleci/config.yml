@@ -55,8 +55,9 @@ jobs:
       - run:
           name: Test React components and generate coverage report
           command: |
-            yarn test:coverage --ci
-            yarn coveralls
+            yarn test
+            # yarn test:coverage --ci
+            # yarn coveralls
       - persist_to_workspace:
           <<: *to_persist
 
@@ -96,14 +97,14 @@ workflows:
       - lint_css:
           requires:
             - checkout
-      # - test:
-      #     requires:
-      #       - checkout
+      - test:
+          requires:
+            - checkout
       - build:
           requires:
             - lint
             - lint_css
-            # - test
+            - test
       - deploy:
           requires:
             - build
