@@ -65,7 +65,7 @@ const b300 = '1.625rem'
 const b400 = '1.25rem'
 const b500 = '1rem'
 const b600 = '0.875rem'
-const b700 = '075rem'
+const b700 = '0.75rem'
 
 theme.font = {
   base: '16px',
@@ -124,9 +124,11 @@ const secondary = '#FF00A2'
 const black = '#000000'
 const white = '#FFFFFF'
 const gray = '#F6F6F6'
+const red = '#e15554'
 
 theme.colors = {
   white,
+  red,
   primary: Object.assign(primary, {
     whitish: lighten(0.45, primary),
     lighter: lighten(0.2, primary),

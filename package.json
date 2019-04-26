@@ -12,7 +12,7 @@
     "lint": "xo --quiet",
     "lint:fix": "xo --quiet --write '**/*.js'",
     "lint:css": "stylelint './components/**/*.js' './styles/**/*.js' './pages/**/*.js'",
-    "test": "jest",
+    "test": "jest --silent",
     "test:watch": "jest --watch",
     "precommit": "lint-staged",
     "storybook": "start-storybook -p 9001"
@@ -87,13 +87,15 @@
       "jest",
       "expect",
       "it",
-      "describe"
+      "describe",
+      "jest"
     ]
   },
   "lint-staged": {
     "*.js": [
       "yarn lint",
       "yarn lint:css",
+      "yarn test",
       "prettier --semi false --single-quote --print-width 100 --tab-width 2 --trailing-comma all --write",
       "git add"
     ]
