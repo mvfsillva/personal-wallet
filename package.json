@@ -95,7 +95,6 @@
     "*.js": [
       "yarn lint",
       "yarn lint:css",
-      "yarn test",
       "prettier --semi false --single-quote --print-width 100 --tab-width 2 --trailing-comma all --write",
       "git add"
     ]
