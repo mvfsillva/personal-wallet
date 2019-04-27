@@ -1,5 +1,10 @@
 # Personal Wallet
 
+<p align="center">
+  <img width="400" height="auto" src=".github/logo.png"/>
+</p>
+
+
 [![CircleCI](https://circleci.com/gh/mvfsillva/personal-wallet.svg?style=svg&circle-token=ae17684f8ec5bfb4a4da30adb4d1558a0266365b)](https://circleci.com/gh/mvfsillva/personal-wallet)
 
 ---
