@@ -7,7 +7,7 @@ import Button from '.'
 
 const Wrapper = styled.div`
   display: flex;
-  width: 750px;
+  width: 100%;
   justify-content: space-evenly;
 `
 
@@ -18,11 +18,18 @@ storiesOf('Button', module)
       <Button palette="secondary" onClick={action('click event')}>
         Secondary color
       </Button>
+      <Button palette="gray" onClick={action('click event')}>
+        Gray color
+      </Button>
+
       <Button outline onClick={action('click event')}>
         Primary outline color
       </Button>
       <Button palette="secondary" outline onClick={action('click event')}>
         Secondary outline color
+      </Button>
+      <Button palette="gray" outline onClick={action('click event')}>
+        Gray outline color
       </Button>
       <Button disabled>disabled</Button>
     </Wrapper>
