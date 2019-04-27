@@ -26,6 +26,7 @@ const Container = styled.div`
 
   @media ${theme.responsive.phone} {
     flex-basis: 100%;
+    justify-content: center;
   }
 `
 
