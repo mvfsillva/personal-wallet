@@ -1,4 +1,4 @@
-const STORAGE_USER = process.env.STORAGE_USER
+const { STORAGE_USER } = process.env
 
 const save = (name, value) => {
   const createdAt = new Date()
