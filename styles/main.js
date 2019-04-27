@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import theme from '../../../theme'
+import theme from '../theme'
 
 const Main = styled.main`
   text-align: center;
@@ -10,6 +10,7 @@ const Main = styled.main`
   align-items: center;
   padding: ${theme.spacing.medium};
   background-color: ${theme.colors.white};
+  flex-direction: ${props => props.column && 'column'};
 
   > div {
     width: 100%;
