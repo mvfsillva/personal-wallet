@@ -151,7 +151,7 @@ theme.colors = {
     darker: darken(0.2, black),
   }),
   gray: Object.assign(gray, {
-    whitish: lighten(0.45, gray),
+    whitish: lighten(0.3, gray),
     lighter: lighten(0.2, gray),
     light: lighten(0.1, gray),
     dark: darken(0.1, gray),
