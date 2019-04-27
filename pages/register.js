@@ -10,6 +10,7 @@ import Loader from '../components/loader'
 import Either from '../helpers/either'
 
 import user from '../services/user'
+import history from '../services/history'
 
 import Container from '../styles/container'
 import Main from '../styles/main'
@@ -19,7 +20,7 @@ class Register extends PureComponent {
     isLoading: false,
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault()
     this.setState({ isLoading: true })
 
@@ -28,12 +29,29 @@ class Register extends PureComponent {
     const token = this.handleEncrypt(payload, secret)
 
     user.save(payload.username, token)
+    this.generateHistory(payload.email)
 
     return Router.push('/login')
   }
 
-  handleEncrypt = (payload, secret) =>
-    crypto.AES.encrypt(JSON.stringify(payload), secret).toString()
+  generateHistory = email => {
+    const balance = {
+      brl: 100000,
+      bta: 0,
+      btc: 0,
+    }
+
+    const quotation = {
+      buy: 1,
+      sell: 1,
+    }
+
+    return history.create('deposity', 'personal-wallet', email, 100000, quotation, balance)
+  }
+
+  handleEncrypt = (payload, secret) => {
+    return crypto.AES.encrypt(JSON.stringify(payload), secret).toString()
+  }
 
   render() {
     const { isLoading } = this.state
