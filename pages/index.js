@@ -47,9 +47,9 @@ class Login extends PureComponent {
 
   validateUser = async (email, password) => {
     const userInfo = await user.get()
-    const token = userInfo.value
 
     try {
+      const token = userInfo.value
       const bytes = crypto.AES.decrypt(token, `${password}${email}`)
       const decrypted = JSON.parse(bytes.toString(crypto.enc.Utf8))
 
