@@ -35,21 +35,22 @@ describe('[Component: Button]', () => {
 
     expect(button('primary').props().palette).toBe('primary')
     expect(button('secondary').props().palette).toBe('secondary')
+    expect(button('gray').props().palette).toBe('gray')
   })
 
   it('should render button with outline prop', () => {
     const button = wrap({ outline: true })
-    expect(button.props().outline).toBeTruthy()
+    expect(button.props().outline).toBe(true)
   })
 
   it('should render button with block prop', () => {
     const button = wrap({ block: true })
-    expect(button.props().block).toBeTruthy()
+    expect(button.props().block).toBe(true)
   })
 
   it('should render button with disabled prop', () => {
     const button = wrap({ disabled: true })
-    expect(button.props().disabled).toBeTruthy()
+    expect(button.props().disabled).toBe(true)
   })
 
   it('should render button children prop', () => {
