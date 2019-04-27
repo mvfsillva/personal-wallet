@@ -11,7 +11,8 @@ import Either from '../../helpers/either'
 
 import user from '../../services/user'
 
-import { Container, Main } from './styles'
+import Container from './styles/container'
+import Main from './styles/main'
 
 class Register extends PureComponent {
   state = {
