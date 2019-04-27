@@ -61,6 +61,27 @@ const Wrapper = styled.button`
     }
   }
 
+  &.gray {
+    background-color: ${theme.colors.gray};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.gray.dark};
+    &:hover {
+      background-color: ${theme.colors.gray.lighter};
+      border-color: ${theme.colors.gray.lighter};
+    }
+
+    &.outline {
+      color: ${theme.colors.gray};
+      border-color: ${theme.colors.gray};
+      background-color: transparent;
+      &:hover {
+        background-color: ${theme.colors.gray};
+        color: ${theme.colors.white};
+        border-color: ${theme.colors.gray};
+      }
+    }
+  }
+
   &.small {
     font-size: ${theme.font.paragraph.fontSize};
     line-height: ${theme.font.paragraph.lineHeight};
@@ -103,6 +124,7 @@ const Button = ({ type, palette, size, disabled, block, outline, onClick, childr
     large: size === 'large',
     primary: palette === 'primary',
     secondary: palette === 'secondary',
+    gray: palette === 'gray',
     disabled,
     block,
     outline,
@@ -127,11 +149,11 @@ Button.defaultProps = {
 Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  palette: PropTypes.oneOf(['primary', 'secondary']),
+  palette: PropTypes.oneOf(['primary', 'secondary', 'gray']),
   disabled: PropTypes.bool,
   block: PropTypes.bool,
   outline: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.any.isRequired,
 }
 
