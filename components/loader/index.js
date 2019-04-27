@@ -21,8 +21,7 @@ const Wrapper = styled.div`
   border: ${theme.radius.large} solid ${props => props.palette};
   border-right-color: transparent;
   border-radius: ${theme.radius.rounded};
-  margin-top: ${theme.spacing.xLarge};
-  margin-bottom: ${theme.spacing.xLarge};
+  margin: auto;
 `
 
 const Loader = ({ size, palette }) => <Wrapper palette={palette} size={size} />

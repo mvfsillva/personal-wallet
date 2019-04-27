@@ -31,15 +31,21 @@ const Label = styled.label`
   font-size: ${theme.font.h600.fontSize};
   font-weight: ${theme.font.h600.fontWeight};
   line-height: ${theme.font.h600.lineHeight};
-  color: ${props => props.error ? theme.colors.red : theme.colors.black};
+  color: ${props => (props.error ? theme.colors.red : theme.colors.black)};
   margin-top: ${theme.spacing.small};
   margin-bottom: ${theme.spacing.small};
 `
 
-const Input = ({ type, placeholder, name, label, required, value, error, onChange, disabled }) => {
+const Container = styled.div`
+  width: 100%;
+  position: relative;
+  margin-bottom: 24px;
+  text-align: left;
+`
 
+const Input = ({ type, placeholder, name, label, required, value, error, onChange, disabled }) => {
   return (
-    <>
+    <Container>
       {label && <Label>{label}</Label>}
       <Wrapper
         type={type}
@@ -51,15 +57,14 @@ const Input = ({ type, placeholder, name, label, required, value, error, onChang
         value={value}
       />
       {error && <Label error={error}>{error}</Label>}
-    </>
+    </Container>
   )
 }
-
 
 Input.defaultProps = {
   type: 'text',
   size: 'medium',
-  required: false
+  required: false,
 }
 
 Input.propTypes = {
@@ -71,7 +76,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   value: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
 }
 
 export default Input
