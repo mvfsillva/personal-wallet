@@ -44,7 +44,7 @@ theme.responsive = {
   smallPhone: 'screen and (min-width: 320px) and (max-width: 480px)',
   smallTablet: 'screen and (min-width: 481px) and (max-width: 767px)',
   smallDesktop: 'screen and (min-width: 1025px) and (max-width: 1280px)',
-  phone: 'screen and (max-width: 580px)',
+  phone: 'screen and (min-width: 320px) and (max-width: 767px)',
   tablet: 'screen and (min-width: 768px) and (max-width: 1024px)',
   desktop: 'screen and (min-width: 1281px)',
 }

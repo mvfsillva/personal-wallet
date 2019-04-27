@@ -31,7 +31,7 @@ class Register extends PureComponent {
     user.save(payload.username, token)
     this.generateHistory(payload.email)
 
-    return Router.push('/login')
+    return Router.push('/')
   }
 
   generateHistory = email => {
