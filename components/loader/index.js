@@ -28,7 +28,7 @@ const Loader = ({ size, palette }) => <Wrapper palette={palette} size={size} />
 
 Loader.defaultProps = {
   size: 24,
-  palette: theme.colors.primary,
+  palette: `${theme.colors.primary}`,
 }
 
 Loader.propTypes = {

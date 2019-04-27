@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Card = ({ palette, children }) => <Wrapper palette={palette}>{children}</Wrapper>
 
 Card.defaultProps = {
-  palette: theme.colors.white,
+  palette: `${theme.colors.white}`,
 }
 
 Card.propTypes = {
