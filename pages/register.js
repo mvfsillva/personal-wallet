@@ -3,16 +3,16 @@ import serializeForm from 'form-serialize'
 import crypto from 'crypto-js'
 import Router from 'next/router'
 
-import Button from '../../components/button'
-import Input from '../../components/input'
-import Loader from '../../components/loader'
+import Button from '../components/button'
+import Input from '../components/input'
+import Loader from '../components/loader'
 
-import Either from '../../helpers/either'
+import Either from '../helpers/either'
 
-import user from '../../services/user'
+import user from '../services/user'
 
-import Container from './styles/container'
-import Main from './styles/main'
+import Container from '../styles/container'
+import Main from '../styles/main'
 
 class Register extends PureComponent {
   state = {
