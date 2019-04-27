@@ -2,7 +2,7 @@ const { STORAGE_USER } = process.env
 
 const save = (name, value) => {
   const createdAt = new Date()
-
+  localStorage.clear()
   localStorage.setItem('name', name)
   localStorage.setItem(STORAGE_USER, JSON.stringify({ value, createdAt }))
 }
