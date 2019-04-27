@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import Router from 'next/router'
 
-import Register from '../pages/register'
+import Register from '../../pages/register'
 
 const wrap = (props = {}) => mount(shallow(<Register {...props} />).get(0))
 
