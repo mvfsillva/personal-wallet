@@ -2,18 +2,20 @@ import React, { PureComponent } from 'react'
 import serializeForm from 'form-serialize'
 import crypto from 'crypto-js'
 import Router from 'next/router'
+import Link from 'next/link'
 
 import Button from '../components/button'
 import Input from '../components/input'
 import Loader from '../components/loader'
 
-import Either from '../helpers/either'
-
 import user from '../services/user'
 import history from '../services/history'
 
+import Either from '../helpers/either'
+
 import Container from '../styles/container'
 import Main from '../styles/main'
+import LinkBlock from '../styles/link-block'
 
 class Register extends PureComponent {
   state = {
@@ -95,6 +97,11 @@ class Register extends PureComponent {
                   <Button type="submit" size="large" palette="primary" block>
                     Register
                   </Button>
+                  <LinkBlock>
+                    <Link href="/">
+                      <a>return to home</a>
+                    </Link>
+                  </LinkBlock>
                 </form>
               }
             />

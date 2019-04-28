@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
-import styled from 'styled-components'
 import serializeForm from 'form-serialize'
 import crypto from 'crypto-js'
 import Router from 'next/router'
 import Link from 'next/link'
-import { transitions } from 'polished'
 
 import Button from '../components/button'
 import Input from '../components/input'
@@ -15,26 +13,13 @@ import cookie from '../services/cookies'
 
 import Either from '../helpers/either'
 
-import transition from '../mixins/transition'
-
 import Container from '../styles/container'
 import Main from '../styles/main'
+import LinkBlock from '../styles/link-block'
 
 import PersonalWallet from '../icons/wallet'
 
 import theme from '../theme'
-
-const Account = styled.div`
-  text-align: left;
-  margin-top: ${theme.spacing.large};
-  > a {
-    cursor: pointer;
-    ${transitions(transition({ property: 'color', duration: '0.5s', delay: '0.2s' }))};
-    &:hover {
-      color: ${theme.colors.primary.darker};
-    }
-  }
-`
 
 const { COOKIE_TOKEN } = process.env
 class Login extends PureComponent {
@@ -108,11 +93,11 @@ class Login extends PureComponent {
                   <Button type="submit" size="large" palette="primary" block>
                     Sign in
                   </Button>
-                  <Account>
+                  <LinkBlock>
                     <Link href="/register">
                       <a>create your account</a>
                     </Link>
-                  </Account>
+                  </LinkBlock>
                 </form>
               }
             />
