@@ -15,7 +15,6 @@ import history from '../services/history'
 import theme from '../theme'
 
 const Content = styled.div`
-  width: 100%;
   padding-top: ${theme.spacing.huge};
   padding-bottom: ${theme.spacing.huge};
 
@@ -53,10 +52,10 @@ class Balance extends PureComponent {
             left={<Loader size={32} />}
             right={
               <>
-                {details.map(({ operation, type }) => (
+                {details.map(({ operation }) => (
                   <HistoryDetail
                     key={shortid.generate()}
-                    type={type}
+                    type={operation.type}
                     origin={operation.origin}
                     destiny={operation.destiny}
                     money={operation.value}
