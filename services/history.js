@@ -1,3 +1,5 @@
+import date from '../helpers/datetime'
+
 const { STORAGE_HISTORY } = process.env
 
 const create = async (type, origin, destiny, value, quotation, balance) => {
@@ -18,7 +20,7 @@ const create = async (type, origin, destiny, value, quotation, balance) => {
         brl,
         bta,
         btc,
-        createdAt: new Date(),
+        createdAt: date.full,
       },
     },
   }
