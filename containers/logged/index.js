@@ -17,11 +17,11 @@ const Container = styled.div`
   section {
     display: flex;
     justify-content: center;
-    flex-basis: calc(100% - 250px);
+    flex-basis: calc(100% - 400px);
   }
 
   aside {
-    width: 180px;
+    width: 280px;
   }
 
   @media ${theme.responsive.phone} {
