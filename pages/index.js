@@ -10,13 +10,17 @@ import Button from '../components/button'
 import Input from '../components/input'
 import Loader from '../components/loader'
 
-import Container from '../styles/container'
-import Main from '../styles/main'
+import user from '../services/user'
+import cookie from '../services/cookies'
+
+import Either from '../helpers/either'
 
 import transition from '../mixins/transition'
 
-import Either from '../helpers/either'
-import user from '../services/user'
+import Container from '../styles/container'
+import Main from '../styles/main'
+
+import PersonalWallet from '../icons/wallet'
 
 import theme from '../theme'
 
@@ -32,10 +36,17 @@ const Account = styled.div`
   }
 `
 
+const { COOKIE_TOKEN } = process.env
 class Login extends PureComponent {
   state = {
     isLoading: false,
     error: '',
+  }
+
+  componentDidMount() {
+    const token = cookie.get()
+
+    return token && Router.push('/balance')
   }
 
   handleSubmit = e => {
@@ -53,6 +64,8 @@ class Login extends PureComponent {
       const bytes = crypto.AES.decrypt(token, `${password}${email}`)
       const decrypted = JSON.parse(bytes.toString(crypto.enc.Utf8))
 
+      cookie.set(COOKIE_TOKEN, JSON.stringify(token))
+
       return Boolean(decrypted) && Router.push('/balance')
     } catch (error) {
       console.error({ error })
@@ -67,7 +80,8 @@ class Login extends PureComponent {
       <Container>
         <Main column>
           <div>
-            <hgroup>
+            <PersonalWallet size={100} />
+            <hgroup style={{ marginTop: theme.spacing.large }}>
               <h1>Welcome to Wallet!</h1>
               <h4>Sign in to your account.</h4>
             </hgroup>
@@ -95,7 +109,9 @@ class Login extends PureComponent {
                     Sign in
                   </Button>
                   <Account>
-                    <Link href="/register">create your account</Link>
+                    <Link href="/register">
+                      <a>create your account</a>
+                    </Link>
                   </Account>
                 </form>
               }
