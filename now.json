@@ -17,5 +17,10 @@
     { "src": "next.config.js", "use": "@now/next" },
     { "src": "server.js", "use": "@now/node" },
     { "src": "static/**", "use": "@now/static" }
-  ]
+  ],
+  "env": {
+    "STORAGE_USER": "pw-user",
+    "STORAGE_HISTORY": "pw-history",
+    "COOKIE_TOKEN": "pwtoken-personal-wallet"
+  }
 }
