@@ -8,10 +8,12 @@ import Loader from '../components/loader'
 
 import Logged from '../containers/logged'
 
+import history from '../services/history'
+
 import Either from '../helpers/either'
 import currencyFormat from '../helpers/currency-format'
 
-import history from '../services/history'
+import withAuth from '../hocs/with-auth'
 
 import theme from '../theme'
 
@@ -122,4 +124,4 @@ class Balance extends PureComponent {
   }
 }
 
-export default Balance
+export default withAuth(Balance)

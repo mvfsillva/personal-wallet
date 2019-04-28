@@ -8,9 +8,11 @@ import Loader from '../components/loader'
 import Logged from '../containers/logged'
 import HistoryDetail from '../containers/history-detail'
 
+import history from '../services/history'
+
 import Either from '../helpers/either'
 
-import history from '../services/history'
+import withAuth from '../hocs/with-auth'
 
 import theme from '../theme'
 
@@ -25,7 +27,7 @@ const Content = styled.div`
   }
 `
 
-class Balance extends PureComponent {
+class History extends PureComponent {
   state = {
     details: [],
     isLoading: true,
@@ -72,4 +74,4 @@ class Balance extends PureComponent {
   }
 }
 
-export default Balance
+export default withAuth(History)

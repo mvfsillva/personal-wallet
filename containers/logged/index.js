@@ -5,7 +5,11 @@ import Router from 'next/router'
 
 import Sidebar from '../../components/sidebar'
 
+import cookie from '../../services/cookies'
+
 import theme from '../../theme'
+
+const { COOKIE_TOKEN } = process.env
 
 const Container = styled.div`
   background-color: ${theme.colors.gray.whitish};
@@ -47,6 +51,7 @@ class Logged extends Component {
   }
 
   onLogout = () => {
+    cookie.remove(COOKIE_TOKEN)
     Router.push('/')
   }
 
