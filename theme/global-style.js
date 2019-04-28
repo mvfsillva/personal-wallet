@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: ${theme.colors.primary};
+
+    &:hover {
+      color: ${theme.colors.primary.dark};
+    }
   }
 
   svg {
