@@ -31,15 +31,29 @@ const Container = styled.div`
 `
 
 class Logged extends Component {
+  state = {
+    name: '',
+    selected: '',
+  }
+
   static propTypes = {
     children: PropTypes.any.isRequired,
   }
 
-  onLogout = () => {
-    Router.push('/login')
+  componentDidMount() {
+    const name = this.getName()
+    const selected = Router.route
+    this.setState({ name, selected })
   }
 
+  onLogout = () => {
+    Router.push('/')
+  }
+
+  getName = () => localStorage.getItem('name') || ''
+
   render() {
+    const { name, selected } = this.state
     const { children } = this.props
     const item = [
       { url: 'balance', label: 'Balance' },
@@ -47,10 +61,17 @@ class Logged extends Component {
       { url: 'transaction', label: 'Transaction' },
       { url: 'quotations', label: 'Quotations' },
     ]
+    const router = selected ? selected.replace('/', '') : ''
 
     return (
       <Container>
-        <Sidebar title="Personal Wallet" item={item} />
+        <Sidebar
+          title="Personal Wallet"
+          name={name}
+          item={item}
+          selected={router}
+          onLogout={this.onLogout}
+        />
         <section>{children}</section>
       </Container>
     )
