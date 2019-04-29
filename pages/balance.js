@@ -111,7 +111,7 @@ class Balance extends PureComponent {
                   <div className="card__size">
                     <Card palette={`${theme.colors.secondary}`}>
                       <h2 className="card__title">Bitcoin</h2>
-                      <h4>{currencyFormat('de-DE', 'BTC', balance.bta)}</h4>
+                      <h4>{currencyFormat('de-DE', 'BTC', balance.btc)}</h4>
                     </Card>
                   </div>
                 </FlexWrap>
