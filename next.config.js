@@ -5,7 +5,6 @@ const pkg = require('./package')
 require('dotenv').config()
 
 module.exports = withOffline({
-  target: 'serverless',
   poweredByHeader: false,
   generateBuildId: async () => pkg.version,
   workboxOpts: {
@@ -19,13 +18,13 @@ module.exports = withOffline({
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60
+            maxAgeSeconds: 30 * 24 * 60 * 60,
           },
           cacheableResponse: {
-            statuses: [0, 200]
-          }
-        }
-      }
-    ]
-  }
+            statuses: [0, 200],
+          },
+        },
+      },
+    ],
+  },
 })
