@@ -13,5 +13,7 @@ const options = [
 const onChangeSelect = action('onChange <Select />')
 
 storiesOf('Select', module).add('Default', () => (
-  <Select options={options} onChange={onChangeSelect} />
+  <div style={{ width: '600px' }}>
+    <Select options={options} onChange={onChangeSelect} />
+  </div>
 ))

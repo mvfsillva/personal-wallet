@@ -163,10 +163,10 @@ class Select extends PureComponent {
           </Options>
           <Choose>
             <Choose.When condition={Boolean(isOpen)}>
-              <ArrowUp />
+              <ArrowUp size={16} />
             </Choose.When>
             <Choose.Otherwise>
-              <ArrowDown />
+              <ArrowDown size={16} />
             </Choose.Otherwise>
           </Choose>
         </Wrapper>
