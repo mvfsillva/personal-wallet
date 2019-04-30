@@ -36,25 +36,27 @@ const TransactionFilter = ({
               onChange={onChangeCurrency}
               label={label}
             />
-          </Block>
-          <Block>
             <If condition={Boolean(optionsDestiny)}>
               <Select
                 name="Selecione"
                 options={optionsDestiny}
-                disabled={isDisabled}
+                disabled={!(optionsDestiny.length > 0)}
                 onChange={onChangeCoin}
+                label="destiny"
               />
             </If>
           </Block>
         </When>
         <Otherwise>
-          <Select
-            name="Selecione"
-            options={options}
-            disabled={isDisabled}
-            onChange={onChangeCoin}
-          />
+          <Block>
+            <Select
+              name="Selecione"
+              options={options}
+              disabled={isDisabled}
+              onChange={onChangeCoin}
+              label="coin"
+            />
+          </Block>
         </Otherwise>
       </Choose>
     </Wrapper>
@@ -63,6 +65,8 @@ const TransactionFilter = ({
 
 TransactionFilter.defaultProps = {
   isDisabled: false,
+  optionsDestiny: [],
+  options: [],
 }
 
 TransactionFilter.propTypes = {
