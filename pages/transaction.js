@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Choose, If } from 'react-extras'
 
@@ -41,33 +40,11 @@ const coins = [
   { value: 'btc', label: 'Bitcoin' },
 ]
 class Transaction extends Component {
-  static async getInitialProps() {
-    try {
-      const request = (service, endpoint, params = {}) => {
-        return api(service)(endpoint, {
-          params: Object.assign(params),
-        })
-      }
-
-      const [bitcoin, brita] = await Promise.all([
-        request(config.bitcoinApi, '/BTC/ticker'),
-        request(config.olindaApi, '/CotacaoDolarDia(dataCotacao=@dataCotacao)', {
-          '@dataCotacao': "'04-18-2019'",
-        }),
-      ])
-
-      return { bitcoin, brita: brita.value[0] }
-    } catch (error) {
-      console.error(error)
-      return false
-    }
-  }
-
   constructor(props) {
     super(props)
     this.state = {
-      bitcoin: props.bitcoin,
-      brita: props.brita,
+      bitcoin: '',
+      brita: '',
       balance: '',
       options: [],
       optionsDestiny: [],
@@ -83,6 +60,24 @@ class Transaction extends Component {
 
   async componentDidMount() {
     await this.getBalance()
+    await this.getQuotations()
+  }
+
+  getQuotations = async () => {
+    const request = (service, endpoint, params = {}) => {
+      return api(service)(endpoint, {
+        params: Object.assign(params),
+      })
+    }
+
+    const [bitcoin, brita] = await Promise.all([
+      request('mercado-bitcoin', ''),
+      request(config.olindaApi, '/CotacaoDolarDia(dataCotacao=@dataCotacao)', {
+        '@dataCotacao': "'04-18-2019'",
+      }),
+    ])
+
+    this.setState({ bitcoin, brita: brita.value[0] })
   }
 
   getBalance = async () => {
@@ -128,6 +123,7 @@ class Transaction extends Component {
 
   quotationForOperation = destiny => {
     const { brita, bitcoin } = this.state
+
     const value =
       destiny === 'bta'
         ? [brita.cotacaoCompra, Number(bitcoin.ticker.sell)]
@@ -149,6 +145,8 @@ class Transaction extends Component {
     const { balance } = data.operation
     const newQuotation = this.quotationForOperation(destiny)
     const newBalance = this.updateBalance(balance)
+
+    console.log({ destiny, newQuotation })
 
     if (balance[origin] > 0.01 || newBalance[origin] > 0) {
       return this.createTransaction(
@@ -234,11 +232,6 @@ class Transaction extends Component {
       </Logged>
     )
   }
-}
-
-Transaction.propTypes = {
-  bitcoin: PropTypes.object.isRequired,
-  brita: PropTypes.object.isRequired,
 }
 
 export default Transaction
