@@ -59,9 +59,9 @@ const HistoryDetail = ({ datetime, type, money, origin, destiny, quotation, bala
       </Row>
       <Row>
         <h5>Balance Details:</h5>
-        <span>{currencyFormat('pt-BR', 'BRL', balance.brl)}</span>
-        <span>{currencyFormat('en-US', 'USD', balance.bta)}</span>
-        <span>{currencyFormat('de-DE', 'BTC', balance.bta)}</span>
+        <span>{currencyFormat('brl', balance.brl)}</span>
+        <span>{currencyFormat('bta', balance.bta)}</span>
+        <span>{currencyFormat('btc', balance.btc)}</span>
       </Row>
     </Card>
   </Wrapper>
@@ -72,7 +72,7 @@ HistoryDetail.propTypes = {
   type: PropTypes.string.isRequired,
   origin: PropTypes.string.isRequired,
   destiny: PropTypes.string.isRequired,
-  money: PropTypes.number.isRequired,
+  money: PropTypes.string.isRequired,
   quotation: PropTypes.object.isRequired,
   balance: PropTypes.object.isRequired,
 }
