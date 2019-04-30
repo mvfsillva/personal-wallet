@@ -3565,6 +3565,17 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+cacheable-response@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/cacheable-response/-/cacheable-response-1.5.2.tgz#10e29445886ca921c5a972a7db73c215dc5a9c43"
+  integrity sha512-S1rlDjATE0Y2/mmPANl/QaqHktWGPGesyjqQGubXG/DMqH9JWZ86Cfw6SAM0rw+eeu+KxbGGaXpZvaJnWs205w==
+  dependencies:
+    compress-brotli "~1.0.5"
+    etag "~1.8.1"
+    keyv "~3.1.0"
+    normalize-url "~4.3.0"
+    pretty-ms "~4.0.0"
+
 call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
@@ -3998,6 +4009,11 @@ component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+compress-brotli@~1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/compress-brotli/-/compress-brotli-1.0.5.tgz#9f132e6ac178c9b9c8ea4d61786bb33938e9d61f"
+  integrity sha512-Wa++KbLfRXranpucSQ2Jj2H/taPEB0/xGxfjFJSWdGV9l01wpo/Z1C2Np+nx99uK1aKexr6MGaLzxh17i2aulg==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -5490,7 +5506,7 @@ expect@^24.7.1:
     jest-message-util "^24.7.1"
     jest-regex-util "^24.3.0"
 
-express@^4.16.3:
+express@^4.16.3, express@^4.16.4:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.4.tgz#fddef61926109e24c515ea97fd2f1bdbf62df12e"
   integrity sha512-j12Uuyb4FMrd/qQAm6uCHAkPtO8FDTRJZBDd5D2KOL2eLaz1yUNdUB/NOIyq0iU4q4cFarsUCrnFDPBcnksuOg==
@@ -7709,6 +7725,11 @@ jsmin@^1.0.1:
   resolved "https://registry.yarnpkg.com/jsmin/-/jsmin-1.0.1.tgz#e7bd0dcd6496c3bf4863235bf461a3d98aa3b98c"
   integrity sha1-570NzWSWw79IYyNb9GGj2YqjuYw=
 
+json-buffer@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
+  integrity sha1-Wx85evx11ne96Lz8Dkfh+aPZqJg=
+
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
@@ -7810,6 +7831,13 @@ keycode@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
   integrity sha1-PQr1bce4uOXLqNCpfxByBO7CKwQ=
+
+keyv@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.1.0.tgz#ecc228486f69991e49e9476485a5be1e8fc5c4d9"
+  integrity sha512-9ykJ/46SN/9KPM/sichzQ7OvXyGDYKGTaDlKMGCAlg2UK8KRy4jb0d8sFc+0Tt0YYnThq8X2RZgCg74RPxgcVA==
+  dependencies:
+    json-buffer "3.0.0"
 
 kind-of@^2.0.1:
   version "2.0.1"
@@ -9014,6 +9042,11 @@ normalize-selector@^0.2.0:
   resolved "https://registry.yarnpkg.com/normalize-selector/-/normalize-selector-0.2.0.tgz#d0b145eb691189c63a78d201dc4fdb1293ef0c03"
   integrity sha1-0LFF62kRicY6eNIB3E/bEpPvDAM=
 
+normalize-url@~4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.3.0.tgz#9c49e10fc1876aeb76dba88bf1b2b5d9fa57b2ee"
+  integrity sha512-0NLtR71o4k6GLP+mr6Ty34c5GA6CMoEsncKJxvQd8NzPxaHRJNnb5gZE8R1XF4CPIS7QPHLJ74IFszwtNVAHVQ==
+
 npm-bundled@^1.0.1:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.6.tgz#e7ba9aadcef962bb61248f91721cd932b3fe6bdd"
@@ -9455,6 +9488,11 @@ parse-json@^4.0.0:
     error-ex "^1.3.1"
     json-parse-better-errors "^1.0.1"
 
+parse-ms@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-2.1.0.tgz#348565a753d4391fa524029956b172cb7753097d"
+  integrity sha512-kHt7kzLoS9VBZfUsiKjv43mr91ea+U05EyKkEtqp7vNbHxmaVuEqN7XxeEVnGrMtYOAxGrDElSi96K7EgO1zCA==
+
 parse5-htmlparser2-tree-adapter@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-5.1.0.tgz#a8244ee12bbd6b8937ad2a16ea43fe348aebcc86"
@@ -9894,6 +9932,13 @@ pretty-hrtime@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
+
+pretty-ms@~4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-4.0.0.tgz#31baf41b94fd02227098aaa03bd62608eb0d6e92"
+  integrity sha512-qG66ahoLCwpLXD09ZPHSCbUWYTqdosB7SMP4OffgTgL2PBKXMuUsrk5Bwg8q4qPkjTXsKBMr+YK3Ltd/6F9s/Q==
+  dependencies:
+    parse-ms "^2.0.0"
 
 prismjs@^1.8.4, prismjs@~1.16.0:
   version "1.16.0"
