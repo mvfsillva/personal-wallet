@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Router from 'next/router'
 import { Choose, If } from 'react-extras'
 
 import PageTitle from '../components/page-title'
@@ -12,11 +13,11 @@ import TransactionFilter from '../containers/transaction-filter'
 
 import currencyFormat from '../helpers/currency-format'
 import setEquation from '../helpers/operation'
+import olindaPromise from '../helpers/olinda-promise'
+import date from '../helpers/datetime'
 
 import history from '../services/history'
 import api from '../services/api'
-
-import config from '../config'
 
 import theme from '../theme'
 
@@ -64,18 +65,8 @@ class Transaction extends Component {
   }
 
   getQuotations = async () => {
-    const request = (service, endpoint, params = {}) => {
-      return api(service)(endpoint, {
-        params: Object.assign(params),
-      })
-    }
-
-    const [bitcoin, brita] = await Promise.all([
-      request('mercado-bitcoin', ''),
-      request(config.olindaApi, '/CotacaoDolarDia(dataCotacao=@dataCotacao)', {
-        '@dataCotacao': "'04-18-2019'",
-      }),
-    ])
+    const bitcoin = await this.request('mercado-bitcoin', '')
+    const brita = await olindaPromise(`${date.olinda}`)
 
     this.setState({ bitcoin, brita: brita.value[0] })
   }
@@ -85,6 +76,12 @@ class Transaction extends Component {
       operation: { balance },
     } = await history.balance()
     this.setState({ balance })
+  }
+
+  request = (service, endpoint, params = {}) => {
+    return api(service)(endpoint, {
+      params: Object.assign(params),
+    })
   }
 
   handleChangeOperation = change => {
@@ -134,9 +131,14 @@ class Transaction extends Component {
 
   onChangeInput = ({ target: { value } }) => {
     const { origin, destiny } = this.state
+
+    if (value < 0) {
+      return this.setState({ error: 'you cannot do this kind of operation' })
+    }
+
     const operation = setEquation(origin, value, ...this.quotationForOperation(destiny))
 
-    this.setState({ operation, value })
+    return this.setState({ operation, value })
   }
 
   createOperation = async () => {
@@ -145,8 +147,6 @@ class Transaction extends Component {
     const { balance } = data.operation
     const newQuotation = this.quotationForOperation(destiny)
     const newBalance = this.updateBalance(balance)
-
-    console.log({ destiny, newQuotation })
 
     if (balance[origin] > 0.01 || newBalance[origin] > 0) {
       return this.createTransaction(
@@ -164,6 +164,8 @@ class Transaction extends Component {
     const formatValue = currencyFormat(origin, value)
 
     history.create(type, origin, destiny, formatValue, quotation, balance)
+
+    return Router.push('/history')
   }
 
   updateBalance = balance => {
