@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
 import Card from '../components/card'
-import Button from '../components/button'
 import PageTitle from '../components/page-title'
 import Loader from '../components/loader'
 
@@ -49,16 +48,6 @@ const FlexWrap = styled.div`
   justify-content: center;
 `
 
-const Transaction = styled.div`
-  button {
-    margin-right: ${theme.spacing.medium};
-  }
-
-  @media ${theme.responsive.phone} {
-    display: none;
-  }
-`
-
 class Balance extends PureComponent {
   state = {
     balance: {},
@@ -80,16 +69,7 @@ class Balance extends PureComponent {
     return (
       <Logged>
         <Content>
-          <PageTitle title="Balance" description="balance broken down by currency">
-            <Transaction>
-              <Button palette="gray" outline onClick={() => console.log('Purchase')}>
-                Purchase
-              </Button>
-              <Button palette="gray" outline onClick={() => console.log('Sell')}>
-                Sell
-              </Button>
-            </Transaction>
-          </PageTitle>
+          <PageTitle title="Balance" description="balance broken down by currency" />
           <section>
             <Either
               when={isLoading}
@@ -99,19 +79,19 @@ class Balance extends PureComponent {
                   <div className="card__size">
                     <Card palette={`${theme.colors.secondary}`}>
                       <h2 className="card__title">Real</h2>
-                      <h4>{currencyFormat('pt-BR', 'BRL', balance.brl)}</h4>
+                      <h4>{currencyFormat('brl', balance.brl)}</h4>
                     </Card>
                   </div>
                   <div className="card__size">
                     <Card palette={`${theme.colors.secondary}`}>
                       <h2 className="card__title">Brita</h2>
-                      <h4>{currencyFormat('en-US', 'USD', balance.bta)}</h4>
+                      <h4>{currencyFormat('bta', balance.bta)}</h4>
                     </Card>
                   </div>
                   <div className="card__size">
                     <Card palette={`${theme.colors.secondary}`}>
                       <h2 className="card__title">Bitcoin</h2>
-                      <h4>{currencyFormat('de-DE', 'BTC', balance.bta)}</h4>
+                      <h4>{currencyFormat('btc', balance.btc)}</h4>
                     </Card>
                   </div>
                 </FlexWrap>
