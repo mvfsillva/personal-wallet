@@ -1,16 +1,15 @@
 import date from '../helpers/datetime'
-
-const { STORAGE_USER } = process.env
+import config from '../config'
 
 const save = (name, value) => {
   const createdAt = date.full
   localStorage.clear()
   localStorage.setItem('name', name)
-  localStorage.setItem(STORAGE_USER, JSON.stringify({ value, createdAt }))
+  localStorage.setItem(config.storageUser, JSON.stringify({ value, createdAt }))
 }
 
 const get = async () => {
-  const data = await localStorage.getItem(STORAGE_USER)
+  const data = await localStorage.getItem(config.storageUser)
   return JSON.parse(data)
 }
 
