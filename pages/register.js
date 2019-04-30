@@ -12,6 +12,7 @@ import user from '../services/user'
 import history from '../services/history'
 
 import Either from '../helpers/either'
+import currencyFormat from '../helpers/currency-format'
 
 import Container from '../styles/container'
 import Main from '../styles/main'
@@ -48,7 +49,16 @@ class Register extends PureComponent {
       sell: 1,
     }
 
-    return history.create('deposity', 'personal-wallet', email, 100000, quotation, balance)
+    console.log(currencyFormat('brl', 100000))
+
+    return history.create(
+      'deposit',
+      'personal-wallet',
+      email,
+      currencyFormat('brl', 100000),
+      quotation,
+      balance,
+    )
   }
 
   handleEncrypt = (payload, secret) => {
