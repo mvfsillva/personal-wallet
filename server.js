@@ -1,6 +1,7 @@
 const cacheableResponse = require('cacheable-response')
 const express = require('express')
 const next = require('next')
+const cors = require('cors')
 const axios = require('axios')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -20,6 +21,8 @@ const ssrCache = cacheableResponse({
 app.prepare().then(() => {
   const server = express()
 
+  server.use(cors())
+
   server.get('/', (req, res) => ssrCache({ req, res, pagePath: '/' }))
 
   server.get('/mercado-bitcoin', async (req, res) => {
@@ -27,7 +30,7 @@ app.prepare().then(() => {
       .get('https://www.mercadobitcoin.net/api/BTC/ticker')
       .then(({ data }) => data)
       .catch(error => console.error({ error }))
-    ssrCache({ req, res, pagePath: 'mercado-bitcoin' })
+    res.setHeader('content-type', 'application/json')
     res.send({ ticker })
   })
 
