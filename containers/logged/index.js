@@ -9,7 +9,7 @@ import cookie from '../../services/cookies'
 
 import theme from '../../theme'
 
-const { COOKIE_TOKEN } = process.env
+import config from '../../config'
 
 const Container = styled.div`
   background-color: ${theme.colors.gray.whitish};
@@ -51,7 +51,7 @@ class Logged extends Component {
   }
 
   onLogout = () => {
-    cookie.remove(COOKIE_TOKEN)
+    cookie.remove(config.cookieToken)
     Router.push('/')
   }
 
@@ -64,7 +64,6 @@ class Logged extends Component {
       { url: 'balance', label: 'Balance' },
       { url: 'history', label: 'History' },
       { url: 'transaction', label: 'Transaction' },
-      { url: 'quotations', label: 'Quotations' },
     ]
     const router = selected ? selected.replace('/', '') : ''
 

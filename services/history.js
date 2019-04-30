@@ -1,6 +1,5 @@
 import date from '../helpers/datetime'
-
-const { STORAGE_HISTORY } = process.env
+import config from '../config'
 
 const create = async (type, origin, destiny, value, quotation, balance) => {
   const { buy = 1, sell = 1 } = quotation
@@ -20,8 +19,8 @@ const create = async (type, origin, destiny, value, quotation, balance) => {
         brl,
         bta,
         btc,
-        createdAt: date.full,
       },
+      createdAt: date.full,
     },
   }
 
@@ -31,11 +30,11 @@ const create = async (type, origin, destiny, value, quotation, balance) => {
 const save = async history => {
   const payload = (await get()) || []
   payload.push(history)
-  return localStorage.setItem(STORAGE_HISTORY, JSON.stringify(payload))
+  return localStorage.setItem(config.storageHistory, JSON.stringify(payload))
 }
 
 const get = async () => {
-  const data = await localStorage.getItem(STORAGE_HISTORY)
+  const data = await localStorage.getItem(config.storageHistory)
   return JSON.parse(data)
 }
 

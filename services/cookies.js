@@ -1,6 +1,6 @@
 import nookies from 'nookies'
 
-const { COOKIE_TOKEN } = process.env
+import config from '../config'
 
 const set = (name, value, { ctx } = {}) => {
   const now = new Date()
@@ -20,8 +20,8 @@ const remove = (name, { ctx } = {}) => {
 
 const get = ctx => {
   if (Object.keys(nookies.get(ctx)).length > 0) {
-    const hasCookie = nookies.get(ctx)[COOKIE_TOKEN]
-    return hasCookie ? JSON.parse(nookies.get(ctx)[COOKIE_TOKEN]) : false
+    const hasCookie = nookies.get(ctx)[config.cookieToken]
+    return hasCookie ? JSON.parse(nookies.get(ctx)[config.cookieToken]) : false
   }
 
   return false

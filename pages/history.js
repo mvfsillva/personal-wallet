@@ -54,9 +54,10 @@ class History extends PureComponent {
             left={<Loader size={32} />}
             right={
               <>
-                {details.map(({ operation }) => (
+                {details.reverse().map(({ operation }) => (
                   <HistoryDetail
                     key={shortid.generate()}
+                    datetime={operation.createdAt}
                     type={operation.type}
                     origin={operation.origin}
                     destiny={operation.destiny}

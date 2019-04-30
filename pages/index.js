@@ -19,9 +19,10 @@ import LinkBlock from '../styles/link-block'
 
 import PersonalWallet from '../icons/wallet'
 
+import config from '../config'
+
 import theme from '../theme'
 
-const { COOKIE_TOKEN } = process.env
 class Login extends PureComponent {
   state = {
     isLoading: false,
@@ -49,7 +50,7 @@ class Login extends PureComponent {
       const bytes = crypto.AES.decrypt(token, `${password}${email}`)
       const decrypted = JSON.parse(bytes.toString(crypto.enc.Utf8))
 
-      cookie.set(COOKIE_TOKEN, JSON.stringify(token))
+      cookie.set(config.cookieToken, JSON.stringify(token))
 
       return Boolean(decrypted) && Router.push('/balance')
     } catch (error) {
