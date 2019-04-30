@@ -1,26 +1,11 @@
 {
   "name": "personal-wallet",
-  "version": 2,
-  "alias": ["personal-wallet.now.sh", "www.personal-wallet.now.sh"],
-  "routes": [
-    { "src": "^/static/(.+)$", "dest": "/static/$1" },
-    {
-      "src": "^/service-worker.js$",
-      "dest": "/_next/static/service-worker.js",
-      "headers": {
-        "cache-control": "public, max-age=43200, immutable",
-        "Service-Worker-Allowed": "/"
-      }
-    }
-  ],
-  "builds": [
-    { "src": "next.config.js", "use": "@now/next" },
-    { "src": "server.js", "use": "@now/node" },
-    { "src": "static/**", "use": "@now/static" }
-  ],
+  "alias": "personal-wallet.now.sh",
   "env": {
     "STORAGE_USER": "pw-user",
     "STORAGE_HISTORY": "pw-history",
-    "COOKIE_TOKEN": "pwtoken-personal-wallet"
+    "COOKIE_TOKEN": "pwtoken-personal-wallet",
+    "OLINDA_API": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata",
+    "BITCOIN_API": "https://www.mercadobitcoin.net/api"
   }
 }
