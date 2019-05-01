@@ -44,6 +44,7 @@
     "react-outside-click-handler": "^1.2.3",
     "shortid": "^2.2.14",
     "styled-components": "^4.2.0",
+    "styled-tools": "^1.7.1",
     "sweetalert2": "^8.9.0",
     "vanilla-masker": "^1.2.0"
   },
