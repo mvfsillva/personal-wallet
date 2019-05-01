@@ -24,10 +24,6 @@ const Container = styled.div`
     flex-basis: calc(100% - 400px);
   }
 
-  aside {
-    width: 280px;
-  }
-
   @media ${theme.responsive.phone} {
     flex-basis: 100%;
     justify-content: center;
