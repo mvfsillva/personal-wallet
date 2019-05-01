@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { For, If, autoBind, Choose } from 'react-extras'
 import KeyHandler from 'react-key-handler'
+import OutsideClickHandler from 'react-outside-click-handler'
 
 import ArrowDown from '../../icons/arrow-down'
 import ArrowUp from '../../icons/arrow-up'
@@ -129,7 +130,7 @@ class Select extends PureComponent {
     } = this.props
 
     return (
-      <>
+      <OutsideClickHandler onOutsideClick={this.closeSelect}>
         <If condition={Boolean(label)} render={() => <StyledLabel>{label}</StyledLabel>} />
         <KeyHandler keyEventName="keydown" keyValue="Escape" onKeyHandle={this.closeSelect} />
         <Wrapper name={name} onChange={onChange} required={required} disabled={disabled}>
@@ -170,7 +171,7 @@ class Select extends PureComponent {
             </Choose.Otherwise>
           </Choose>
         </Wrapper>
-      </>
+      </OutsideClickHandler>
     )
   }
 }
