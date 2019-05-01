@@ -9,7 +9,11 @@ import theme from '../../theme'
 
 const { When, Otherwise } = Choose
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  @media ${theme.responsive.phone} {
+    margin-top: ${theme.spacing.huge};
+  }
+`
 
 const Block = styled.div`
   padding-top: ${theme.spacing.medium};

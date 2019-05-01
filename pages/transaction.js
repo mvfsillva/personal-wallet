@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import Router from 'next/router'
+import Swal from 'sweetalert2'
 import { Choose, If } from 'react-extras'
+import { toPattern } from 'vanilla-masker'
 
 import PageTitle from '../components/page-title'
 import Input from '../components/input'
@@ -19,21 +20,10 @@ import date from '../helpers/datetime'
 import history from '../services/history'
 import api from '../services/api'
 
+import Content from '../styles/content'
+import Block from '../styles/block'
+
 import theme from '../theme'
-
-const Content = styled.div`
-  padding-top: ${theme.spacing.huge};
-  padding-bottom: ${theme.spacing.huge};
-  width: 600px;
-`
-
-const Block = styled.div`
-  padding-top: ${theme.spacing.medium};
-  padding-bottom: ${theme.spacing.medium};
-  button {
-    margin-right: ${theme.spacing.medium};
-  }
-`
 
 const coins = [
   { value: 'brl', label: 'Real' },
@@ -50,8 +40,10 @@ class Transaction extends Component {
       options: [],
       optionsDestiny: [],
       label: '',
+      origin: 'brl',
       type: '',
       operation: '',
+      value: '',
       error: '',
       isDisabled: true,
       isLoading: false,
@@ -62,6 +54,12 @@ class Transaction extends Component {
   async componentDidMount() {
     await this.getBalance()
     await this.getQuotations()
+  }
+
+  request = (service, endpoint, params = {}) => {
+    return api(service)(endpoint, {
+      params: Object.assign(params),
+    })
   }
 
   getQuotations = async () => {
@@ -78,16 +76,8 @@ class Transaction extends Component {
     this.setState({ balance })
   }
 
-  request = (service, endpoint, params = {}) => {
-    return api(service)(endpoint, {
-      params: Object.assign(params),
-    })
-  }
-
   handleChangeOperation = change => {
-    if (change === 'sell') {
-      return this.handleSell()
-    }
+    if (change === 'sell') return this.handleSell()
 
     this.setState({ isLoading: false, isRenderForm: false })
 
@@ -132,9 +122,7 @@ class Transaction extends Component {
   onChangeInput = ({ target: { value } }) => {
     const { origin, destiny } = this.state
 
-    if (value < 0) {
-      return this.setState({ error: 'you cannot do this kind of operation' })
-    }
+    if (value < 0) return this.setState({ error: 'you cannot do this kind of operation' })
 
     const operation = setEquation(origin, value, ...this.quotationForOperation(destiny))
 
@@ -148,9 +136,11 @@ class Transaction extends Component {
     const newQuotation = this.quotationForOperation(destiny)
     const newBalance = this.updateBalance(balance)
 
+    const operation = type === 'sell' ? '💵 sell' : '🔄 transfer'
+
     if (balance[origin] > 0.01 || newBalance[origin] > 0) {
       return this.createTransaction(
-        type,
+        operation,
         Object.assign({}, { buy: newQuotation[0], sell: newQuotation[1] }),
         newBalance,
       )
@@ -163,9 +153,29 @@ class Transaction extends Component {
     const { origin, destiny, value } = this.state
     const formatValue = currencyFormat(origin, value)
 
-    history.create(type, origin, destiny, formatValue, quotation, balance)
+    this.confirmTransaction(type, origin, destiny, formatValue, quotation, balance)
+  }
 
-    return Router.push('/history')
+  confirmTransaction = (type, origin, destiny, formatValue, quotation, balance) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: `${theme.colors.primary}`,
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Purchase',
+    }).then(result => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Exchanged!',
+          type: 'success',
+          confirmButtonColor: `${theme.colors.primary}`,
+        })
+        history.create(type, origin, destiny, formatValue, quotation, balance)
+        return Router.push('/history')
+      }
+    })
   }
 
   updateBalance = balance => {
@@ -187,8 +197,10 @@ class Transaction extends Component {
       isLoading,
       isRenderForm,
       error,
+      value,
     } = this.state
     const transactionProps = { options, isDisabled, label, optionsDestiny }
+    const currencyValue = toPattern(value, '99999.99')
 
     return (
       <Logged>
@@ -222,7 +234,13 @@ class Transaction extends Component {
               />
               <Block>
                 <If condition={isRenderForm}>
-                  <Input name="money" label="value" onChange={this.onChangeInput} error={error} />
+                  <Input
+                    name="money"
+                    label="value"
+                    error={error}
+                    onChange={this.onChangeInput}
+                    value={currencyValue}
+                  />
                   <Button size="large" onClick={this.createOperation}>
                     Make a transaction
                   </Button>

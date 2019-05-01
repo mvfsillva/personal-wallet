@@ -43,12 +43,12 @@ const HistoryDetail = ({ datetime, type, money, origin, destiny, quotation, bala
   <Wrapper>
     <Card palette={`${theme.colors.secondary}`}>
       <CardTitle>
-        <span>{type}</span>
+        <h4>{type}</h4>
         <span>{datetime}</span>
       </CardTitle>
       <Row>
         <span>
-          {origin} - {destiny}
+          {origin} for {destiny}
         </span>
         <span>{money}</span>
       </Row>
