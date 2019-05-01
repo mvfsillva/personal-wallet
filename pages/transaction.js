@@ -16,6 +16,7 @@ import currencyFormat from '../helpers/currency-format'
 import setEquation from '../helpers/operation'
 import olindaPromise from '../helpers/olinda-promise'
 import date from '../helpers/datetime'
+import notification from '../helpers/notification'
 
 import history from '../services/history'
 import api from '../services/api'
@@ -121,9 +122,6 @@ class Transaction extends Component {
 
   onChangeInput = ({ target: { value } }) => {
     const { origin, destiny } = this.state
-
-    if (value < 0) return this.setState({ error: 'you cannot do this kind of operation' })
-
     const operation = setEquation(origin, value, ...this.quotationForOperation(destiny))
 
     return this.setState({ operation, value })
@@ -146,7 +144,14 @@ class Transaction extends Component {
       )
     }
 
-    return this.setState({ error: `You don't have money enough to complete this transaction` })
+    if (origin === destiny) {
+      return notification('warning', 'Source currency cannot be the same as destination currency')
+    }
+
+    return notification(
+      'error',
+      `You don't have ${origin.toUpperCase()} enough to complete this transaction`,
+    )
   }
 
   createTransaction = async (type, quotation, balance) => {
@@ -162,16 +167,13 @@ class Transaction extends Component {
       text: "You won't be able to revert this!",
       type: 'warning',
       showCancelButton: true,
+      cancelButtonColor: `${theme.colors.red}`,
       confirmButtonColor: `${theme.colors.primary}`,
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Purchase',
+      confirmButtonText: type === '💵 sell' ? 'sell' : 'Purchase',
     }).then(result => {
       if (result.value) {
-        Swal.fire({
-          title: 'Exchanged!',
-          type: 'success',
-          confirmButtonColor: `${theme.colors.primary}`,
-        })
+        notification('success', '', 'Exchanged!')
+
         history.create(type, origin, destiny, formatValue, quotation, balance)
         return Router.push('/history')
       }

@@ -11,7 +11,11 @@ const currencyFormat = (coin, money) => {
 
   const currency = coin.toUpperCase()
 
-  return new Intl.NumberFormat(locale[coin], { style: 'currency', currency })
+  return new Intl.NumberFormat(locale[coin], {
+    style: 'currency',
+    currency,
+    maximumSignificantDigits: 2,
+  })
     .format(money)
     .replace(/BTC/, 'Ƀ')
 }
