@@ -54,8 +54,8 @@ const HistoryDetail = ({ datetime, type, money, origin, destiny, quotation, bala
       </Row>
       <Row>
         <h5>Quotation Details:</h5>
-        <span>Buy: {quotation.buy}</span>
-        <span>Sell: {quotation.sell}</span>
+        <span>Buy: {quotation.buy.toFixed(2)}</span>
+        <span>Sell: {quotation.sell.toFixed(2)}</span>
       </Row>
       <Row>
         <h5>Balance Details:</h5>
