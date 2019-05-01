@@ -41,6 +41,7 @@
     "react-dom": "^16.8.6",
     "react-extras": "^0.9.0",
     "react-key-handler": "^1.2.0-beta.3",
+    "react-outside-click-handler": "^1.2.3",
     "shortid": "^2.2.14",
     "styled-components": "^4.2.0",
     "sweetalert2": "^8.9.0",
