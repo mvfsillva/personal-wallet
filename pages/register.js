@@ -3,6 +3,7 @@ import serializeForm from 'form-serialize'
 import crypto from 'crypto-js'
 import Router from 'next/router'
 import Link from 'next/link'
+import Swal from 'sweetalert2'
 
 import Button from '../components/button'
 import Input from '../components/input'
@@ -18,6 +19,10 @@ import Container from '../styles/container'
 import Main from '../styles/main'
 import LinkBlock from '../styles/link-block'
 
+import PersonalWallet from '../icons/wallet'
+
+import theme from '../theme'
+
 class Register extends PureComponent {
   state = {
     isLoading: false,
@@ -26,6 +31,7 @@ class Register extends PureComponent {
   handleSubmit = async e => {
     e.preventDefault()
     this.setState({ isLoading: true })
+    this.successDialog()
 
     const payload = serializeForm(e.target, { hash: true })
     const secret = `${payload.password}${payload.email}`
@@ -35,6 +41,14 @@ class Register extends PureComponent {
     this.generateHistory(payload.email)
 
     return Router.push('/')
+  }
+
+  successDialog = () => {
+    Swal.fire({
+      type: 'success',
+      showConfirmButton: false,
+      timer: 1000,
+    })
   }
 
   generateHistory = email => {
@@ -49,10 +63,8 @@ class Register extends PureComponent {
       sell: 1,
     }
 
-    console.log(currencyFormat('brl', 100000))
-
     return history.create(
-      'deposit',
+      '💰 deposit',
       'personal-wallet',
       email,
       currencyFormat('brl', 100000),
@@ -72,7 +84,9 @@ class Register extends PureComponent {
       <Container>
         <Main>
           <div>
-            <hgroup>
+            <PersonalWallet size={100} />
+
+            <hgroup style={{ marginTop: theme.spacing.large }}>
               <h1>Welcome to Wallet!</h1>
               <h4>Create your account.</h4>
             </hgroup>
@@ -103,7 +117,6 @@ class Register extends PureComponent {
                     placeholder="******"
                     required
                   />
-                  <Input type="password" name="token" label="Token" placeholder="****" required />
                   <Button type="submit" size="large" palette="primary" block>
                     Register
                   </Button>
