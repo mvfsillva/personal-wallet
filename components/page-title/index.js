@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import theme from '../../theme'
+import { theme } from 'styled-tools'
 
 const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${theme.spacing.xLarge};
+  margin-bottom: ${theme('spacing.xLarge')};
 
   h2 {
-    margin-bottom: ${theme.spacing.small};
+    margin-bottom: ${theme('spacing.small')};
+  }
+
+  @media ${theme('responsive.phone')} {
+    margin: ${theme('spacing.small')};
   }
 `
 const PageTitle = ({ children, title, description }) => (

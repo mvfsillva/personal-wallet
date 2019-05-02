@@ -21,8 +21,6 @@ import LinkBlock from '../styles/link-block'
 
 import PersonalWallet from '../icons/wallet'
 
-import theme from '../theme'
-
 class Register extends PureComponent {
   state = {
     isLoading: false,
@@ -63,14 +61,7 @@ class Register extends PureComponent {
       sell: 1,
     }
 
-    return history.create(
-      '💰 deposit',
-      'personal-wallet',
-      email,
-      currencyFormat('brl', 100000),
-      quotation,
-      balance,
-    )
+    return history.create('💰 deposit', 'personal-wallet', email, currencyFormat('brl', 100000), quotation, balance)
   }
 
   handleEncrypt = (payload, secret) => {
@@ -84,9 +75,9 @@ class Register extends PureComponent {
       <Container>
         <Main>
           <div>
-            <PersonalWallet size={100} />
+            <PersonalWallet size={70} />
 
-            <hgroup style={{ marginTop: theme.spacing.large }}>
+            <hgroup style={{ marginTop: '24px' }}>
               <h1>Welcome to Wallet!</h1>
               <h4>Create your account.</h4>
             </hgroup>
@@ -96,27 +87,9 @@ class Register extends PureComponent {
               left={<Loader size={32} />}
               right={
                 <form onSubmit={this.handleSubmit}>
-                  <Input
-                    type="text"
-                    name="username"
-                    label="Name"
-                    placeholder="ex: Marcus"
-                    required
-                  />
-                  <Input
-                    type="email"
-                    name="email"
-                    label="E-mail"
-                    placeholder="ex: marcus@wallet.com"
-                    required
-                  />
-                  <Input
-                    type="password"
-                    name="password"
-                    label="Password"
-                    placeholder="******"
-                    required
-                  />
+                  <Input type="text" name="username" label="Name" placeholder="ex: Marcus" required />
+                  <Input type="email" name="email" label="E-mail" placeholder="ex: marcus@wallet.com" required />
+                  <Input type="password" name="password" label="Password" placeholder="******" required />
                   <Button type="submit" size="large" palette="primary" block>
                     Register
                   </Button>

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import shortid from 'shortid'
+import { theme } from 'styled-tools'
 
 import PageTitle from '../components/page-title'
 import Loader from '../components/loader'
@@ -14,13 +15,11 @@ import Either from '../helpers/either'
 
 import withAuth from '../hocs/with-auth'
 
-import theme from '../theme'
-
 const Content = styled.div`
-  padding-top: ${theme.spacing.huge};
-  padding-bottom: ${theme.spacing.huge};
+  padding-top: ${theme('spacing.huge')};
+  padding-bottom: ${theme('spacing.huge')};
 
-  @media ${theme.responsive.phone} {
+  @media ${theme('responsive.phone')} {
     .card__size {
       width: 300px;
     }

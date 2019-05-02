@@ -51,7 +51,8 @@ const Wrapper = styled.aside`
 `
 
 const Exit = styled.div`
-  padding: ${theme('spacing.small')};
+  padding: ${theme('spacing.medium')};
+  margin-bottom: ${theme('spacing.large')};
   cursor: pointer;
 `
 
@@ -96,10 +97,10 @@ const Hero = styled.div`
 
 const Sandwich = styled.div`
   @media ${theme('responsive.phone')} {
-    outline: ${theme('colors.white')};
+    position: fixed;
     display: flex;
-    position: absolute;
-    left: ${theme('spacing.medium')};
+    outline: ${theme('colors.white')};
+    left: ${theme('spacing.tiny')};
     z-index: ${theme('zindex.dropdown')};
     cursor: pointer;
   }

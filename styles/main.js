@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-
-import theme from '../theme'
+import { theme } from 'styled-tools'
 
 const Main = styled.main`
   text-align: center;
@@ -8,8 +7,8 @@ const Main = styled.main`
   width: 100%;
   height: 70vh;
   align-items: center;
-  padding: ${theme.spacing.medium};
-  background-color: ${theme.colors.white};
+  padding: ${theme('spacing.medium')};
+  background-color: ${theme('colors.white')};
   flex-direction: ${props => props.column && 'column'};
 
   > div {
@@ -23,12 +22,12 @@ const Main = styled.main`
   }
 
   h4 {
-    margin-top: ${theme.spacing.small};
-    margin-bottom: ${theme.spacing.xxLarge};
-    color: ${theme.colors.gray.lighter};
+    margin-top: ${theme('spacing.small')};
+    margin-bottom: ${theme('spacing.xxLarge')};
+    color: ${theme('colors.gray.lighter')};
   }
 
-  @media ${theme.responsive.phone} {
+  @media ${theme('responsive.phone')} {
     box-shadow: none;
   }
 `

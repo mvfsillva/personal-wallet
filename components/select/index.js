@@ -4,41 +4,40 @@ import styled from 'styled-components'
 import { For, If, autoBind, Choose } from 'react-extras'
 import KeyHandler from 'react-key-handler'
 import OutsideClickHandler from 'react-outside-click-handler'
+import { theme } from 'styled-tools'
 
 import ArrowDown from '../../icons/arrow-down'
 import ArrowUp from '../../icons/arrow-up'
-
-import theme from '../../theme'
 
 const Wrapper = styled.div`
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
-  background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors.gray.dark};
-  border-radius: ${theme.radius.small};
-  font-size: ${theme.font.b200.fontSize};
-  font-weight: ${theme.font.b200.fontWeight};
+  background-color: ${theme('colors.white')};
+  border: 1px solid ${theme('colors.gray.dark')};
+  border-radius: ${theme('radius.small')};
+  font-size: ${theme('font.b200.fontSize')};
+  font-weight: ${theme('font.b200.fontWeight')};
 
   svg {
     position: absolute;
-    right: ${theme.spacing.small};
+    right: ${theme('spacing.small')};
     pointer-events: none;
   }
 
   &[disabled] {
     cursor: not-allowed;
-    background-color: ${theme.colors.gray.lighter};
+    background-color: ${theme('colors.gray.lighter')};
   }
 `
 
 const StyledLabel = styled.label`
-  margin-top: ${theme.spacing.small};
-  margin-bottom: ${theme.spacing.small};
-  color: ${theme.colors.black};
-  font-size: ${theme.font.caption.fontSize};
-  font-weight: ${theme.font.caption.fontWeight};
+  margin-top: ${theme('spacing.small')};
+  margin-bottom: ${theme('spacing.small')};
+  color: ${theme('colors.black')};
+  font-size: ${theme('font.caption.fontSize')};
+  font-weight: ${theme('font.caption.fontWeight')};
   display: block;
 `
 
@@ -47,10 +46,10 @@ const Selected = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: ${theme.spacing.medium};
+  padding: ${theme('spacing.medium')};
 
   span {
-    color: ${theme.colors.black};
+    color: ${theme('colors.black')};
   }
 `
 
@@ -59,10 +58,10 @@ const Options = styled.div`
   top: 100%;
   left: 0;
   right: 0;
-  border: 1px solid ${theme.colors.gray.dark};
-  background: ${theme.colors.white};
+  border: 1px solid ${theme('colors.gray.dark')};
+  background: ${theme('colors.white')};
   cursor: pointer;
-  z-index: ${theme.zindex.dropdown};
+  z-index: ${theme('zindex.dropdown')};
   display: ${props => (props.open ? 'block' : 'none')};
   max-height: 350px;
   overflow-y: auto;
@@ -70,13 +69,13 @@ const Options = styled.div`
 
 const StyledOption = styled.span`
   display: flex;
-  padding: ${theme.spacing.medium};
-  border-bottom: 1px solid ${theme.colors.gray.dark};
+  padding: ${theme('spacing.medium')};
+  border-bottom: 1px solid ${theme('colors.gray.dark')};
   cursor: pointer;
 
   &:hover,
   &.active {
-    background-color: ${theme.colors.gray};
+    background-color: ${theme('colors.gray')};
   }
 `
 
@@ -117,17 +116,7 @@ class Select extends PureComponent {
 
   render() {
     const { isOpen, labelOption } = this.state
-    const {
-      name,
-      options,
-      onChange,
-      selected,
-      selectedLabel,
-      required,
-      disabled,
-      placeholder,
-      label,
-    } = this.props
+    const { name, options, onChange, selected, selectedLabel, required, disabled, placeholder, label } = this.props
 
     return (
       <OutsideClickHandler onOutsideClick={this.closeSelect}>

@@ -21,8 +21,6 @@ import PersonalWallet from '../icons/wallet'
 
 import config from '../config'
 
-import theme from '../theme'
-
 class Login extends PureComponent {
   state = {
     isLoading: false,
@@ -66,8 +64,8 @@ class Login extends PureComponent {
       <Container>
         <Main column>
           <div>
-            <PersonalWallet size={100} />
-            <hgroup style={{ marginTop: theme.spacing.large }}>
+            <PersonalWallet size={80} />
+            <hgroup style={{ marginTop: '24px' }}>
               <h1>Welcome to Wallet!</h1>
               <h4>Sign in to your account.</h4>
             </hgroup>
@@ -76,21 +74,8 @@ class Login extends PureComponent {
               left={<Loader size={32} />}
               right={
                 <form onSubmit={this.handleSubmit}>
-                  <Input
-                    type="email"
-                    name="email"
-                    label="E-mail"
-                    placeholder="ex: marcus@wallet.com"
-                    required
-                  />
-                  <Input
-                    type="password"
-                    name="password"
-                    label="Password"
-                    placeholder="******"
-                    required
-                    error={error}
-                  />
+                  <Input type="email" name="email" label="E-mail" placeholder="ex: marcus@wallet.com" required />
+                  <Input type="password" name="password" label="Password" placeholder="******" required error={error} />
                   <Button type="submit" size="large" palette="primary" block>
                     Sign in
                   </Button>

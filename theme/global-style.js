@@ -11,11 +11,11 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     color: ${theme.colors.black};
-    font-size: ${theme.font.base};
   }
 
   body {
     background-color: ${theme.colors.white};
+    font-size: ${theme.font.base};
   }
 
   a {

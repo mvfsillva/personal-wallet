@@ -3,6 +3,7 @@ import Router from 'next/router'
 import Swal from 'sweetalert2'
 import { Choose, If } from 'react-extras'
 import { toPattern } from 'vanilla-masker'
+import { theme } from 'styled-tools'
 
 import PageTitle from '../components/page-title'
 import Input from '../components/input'
@@ -24,13 +25,7 @@ import api from '../services/api'
 import Content from '../styles/content'
 import Block from '../styles/block'
 
-import theme from '../theme'
-
-const coins = [
-  { value: 'brl', label: 'Real' },
-  { value: 'bta', label: 'Brita' },
-  { value: 'btc', label: 'Bitcoin' },
-]
+const coins = [{ value: 'brl', label: 'Real' }, { value: 'bta', label: 'Brita' }, { value: 'btc', label: 'Bitcoin' }]
 class Transaction extends Component {
   constructor(props) {
     super(props)
@@ -104,9 +99,7 @@ class Transaction extends Component {
 
     this.setState({ isRenderForm: true })
 
-    return type === 'sell'
-      ? this.setState({ origin: value, destiny: 'brl' })
-      : this.setState({ destiny: value })
+    return type === 'sell' ? this.setState({ origin: value, destiny: 'brl' }) : this.setState({ destiny: value })
   }
 
   quotationForOperation = destiny => {
@@ -148,10 +141,7 @@ class Transaction extends Component {
       return notification('warning', 'Source currency cannot be the same as destination currency')
     }
 
-    return notification(
-      'error',
-      `You don't have ${origin.toUpperCase()} enough to complete this transaction`,
-    )
+    return notification('error', `You don't have ${origin.toUpperCase()} enough to complete this transaction`)
   }
 
   createTransaction = async (type, quotation, balance) => {
@@ -167,8 +157,8 @@ class Transaction extends Component {
       text: "You won't be able to revert this!",
       type: 'warning',
       showCancelButton: true,
-      cancelButtonColor: `${theme.colors.red}`,
-      confirmButtonColor: `${theme.colors.primary}`,
+      cancelButtonColor: theme('colors.red'),
+      confirmButtonColor: theme('colors.primary'),
       confirmButtonText: type === '💵 sell' ? 'sell' : 'Purchase',
     }).then(result => {
       if (result.value) {
@@ -190,31 +180,21 @@ class Transaction extends Component {
   }
 
   render() {
-    const {
-      balance,
-      options,
-      label,
-      optionsDestiny,
-      isDisabled,
-      isLoading,
-      isRenderForm,
-      error,
-      value,
-    } = this.state
+    const { balance, options, label, optionsDestiny, isDisabled, isLoading, isRenderForm, error, value } = this.state
     const transactionProps = { options, isDisabled, label, optionsDestiny }
     const currencyValue = toPattern(value, '99999.99')
 
     return (
       <Logged>
         <Content>
-          <div style={{ height: '200px' }}>
-            <PageTitle title="Transaction" description="buy or exchange your coins">
-              <div>
-                <h4>{currencyFormat('brl', balance && balance.brl)}</h4>
-                <h4>{currencyFormat('bta', balance && balance.bta)}</h4>
-                <h4>{currencyFormat('btc', balance && balance.btc)}</h4>
-              </div>
-            </PageTitle>
+          <PageTitle title="Transaction" description="buy or exchange your coins">
+            <div>
+              <h4>{currencyFormat('brl', balance && balance.brl)}</h4>
+              <h4>{currencyFormat('bta', balance && balance.bta)}</h4>
+              <h4>{currencyFormat('btc', balance && balance.btc)}</h4>
+            </div>
+          </PageTitle>
+          <div>
             <Block>
               <Button palette="gray" outline onClick={() => this.handleChangeOperation('transfer')}>
                 Transfer
@@ -236,13 +216,7 @@ class Transaction extends Component {
               />
               <Block>
                 <If condition={isRenderForm}>
-                  <Input
-                    name="money"
-                    label="value"
-                    error={error}
-                    onChange={this.onChangeInput}
-                    value={currencyValue}
-                  />
+                  <Input name="money" label="value" error={error} onChange={this.onChangeInput} value={currencyValue} />
                   <Button size="large" onClick={this.createOperation}>
                     Make a transaction
                   </Button>
