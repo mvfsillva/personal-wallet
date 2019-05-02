@@ -1,24 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { theme } from 'styled-tools'
 
 import Card from '../../components/card'
 
 import currencyFormat from '../../helpers/currency-format'
 
-import theme from '../../theme'
-
 const Wrapper = styled.div`
   width: 600px;
-  margin-right: ${theme.spacing.medium};
 
   span,
   h4,
   h5 {
-    color: ${theme.colors.white};
+    color: ${theme('colors.white')};
   }
 
-  @media ${theme.responsive.phone} {
+  @media ${theme('responsive.phone')} {
     width: 300px;
   }
 `
@@ -26,22 +24,22 @@ const Wrapper = styled.div`
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: ${theme.spacing.small};
+  margin-top: ${theme('spacing.small')};
   h5 {
-    color: ${theme.colors.white};
+    color: ${theme('colors.white')};
   }
 `
 
 const CardTitle = styled.div`
   white-space: nowrap;
-  margin-bottom: ${theme.spacing.medium};
+  margin-bottom: ${theme('spacing.medium')};
   display: flex;
   justify-content: space-between;
 `
 
 const HistoryDetail = ({ datetime, type, money, origin, destiny, quotation, balance }) => (
   <Wrapper>
-    <Card palette={`${theme.colors.secondary}`}>
+    <Card palette={theme('colors.secondary')}>
       <CardTitle>
         <h4>{type}</h4>
         <span>{datetime}</span>

@@ -1,19 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import theme from '../../theme'
+import { theme } from 'styled-tools'
 
 const Wrapper = styled.input`
   width: 100%;
-  border-radius: ${theme.radius.tiny};
-  background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors.gray.darker};
-  padding: ${theme.spacing.small} ${theme.spacing.medium};
-  font-size: ${theme.font.paragraph.fontSize};
-  font-weight: ${theme.font.paragraph.fontWeight};
-  line-height: ${theme.font.paragraph.lineHeight};
-  color: ${theme.colors.black.whitish};
+  border-radius: ${theme('radius.tiny')};
+  background-color: ${theme('colors.white')};
+  border: 1px solid ${theme('colors.gray.darker')};
+  padding: ${theme('spacing.small')} ${theme('spacing.medium')};
+  font-size: ${theme('font.paragraph.fontSize')};
+  font-weight: ${theme('font.paragraph.fontWeight')};
+  line-height: ${theme('font.paragraph.lineHeight')};
+  color: ${theme('colors.black.whitish')};
   appearance: none;
 
   &[required] {
@@ -21,19 +20,19 @@ const Wrapper = styled.input`
   }
 
   &[readonly] {
-    background-color: ${theme.colors.gray.darker};
+    background-color: ${theme('colors.gray.darker')};
     cursor: not-allowed;
   }
 `
 
 const Label = styled.label`
   display: block;
-  font-size: ${theme.font.h600.fontSize};
-  font-weight: ${theme.font.h600.fontWeight};
-  line-height: ${theme.font.h600.lineHeight};
-  color: ${props => (props.error ? theme.colors.red : theme.colors.black)};
-  margin-top: ${theme.spacing.small};
-  margin-bottom: ${theme.spacing.small};
+  font-size: ${theme('font.h600.fontSize')};
+  font-weight: ${theme('font.h600.fontWeight')};
+  line-height: ${theme('font.h600.lineHeight')};
+  color: ${props => (props.error ? theme('colors.red') : theme('colors.black'))};
+  margin-top: ${theme('spacing.small')};
+  margin-bottom: ${theme('spacing.small')};
 `
 
 const Container = styled.div`

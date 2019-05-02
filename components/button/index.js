@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classnames from 'classnames'
 import { transitions } from 'polished'
+import { theme } from 'styled-tools'
 
-import theme from '../../theme'
 import transition from '../../mixins/transition'
 
 const Wrapper = styled.button`
@@ -20,90 +20,90 @@ const Wrapper = styled.button`
   ])};
 
   &.primary {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
-    border-color: ${theme.colors.primary};
+    background-color: ${theme('colors.primary')};
+    color: ${theme('colors.white')};
+    border-color: ${theme('colors.primary')};
     &:hover {
-      background-color: ${theme.colors.primary.darker};
-      border-color: ${theme.colors.primary.darker};
+      background-color: ${theme('colors.primary.darker')};
+      border-color: ${theme('colors.primary.darker')};
     }
 
     &.outline {
-      color: ${theme.colors.primary};
-      border-color: ${theme.colors.primary};
+      color: ${theme('colors.primary')};
+      border-color: ${theme('colors.primary')};
       background-color: transparent;
       &:hover {
-        background-color: ${theme.colors.primary};
-        color: ${theme.colors.white};
-        border-color: ${theme.colors.primary};
+        background-color: ${theme('colors.primary')};
+        color: ${theme('colors.white')};
+        border-color: ${theme('colors.primary')};
       }
     }
   }
 
   &.secondary {
-    background-color: ${theme.colors.secondary};
-    color: ${theme.colors.white};
-    border-color: ${theme.colors.secondary.dark};
+    background-color: ${theme('colors.secondary')};
+    color: ${theme('colors.white')};
+    border-color: ${theme('colors.secondary.dark')};
     &:hover {
-      background-color: ${theme.colors.secondary.lighter};
-      border-color: ${theme.colors.secondary.lighter};
+      background-color: ${theme('colors.secondary.lighter')};
+      border-color: ${theme('colors.secondary.lighter')};
     }
 
     &.outline {
-      color: ${theme.colors.secondary};
-      border-color: ${theme.colors.secondary};
+      color: ${theme('colors.secondary')};
+      border-color: ${theme('colors.secondary')};
       background-color: transparent;
       &:hover {
-        background-color: ${theme.colors.secondary};
-        color: ${theme.colors.white};
-        border-color: ${theme.colors.secondary};
+        background-color: ${theme('colors.secondary')};
+        color: ${theme('colors.white')};
+        border-color: ${theme('colors.secondary')};
       }
     }
   }
 
   &.gray {
-    background-color: ${theme.colors.gray};
-    color: ${theme.colors.white};
-    border-color: ${theme.colors.gray.dark};
+    background-color: ${theme('colors.gray')};
+    color: ${theme('colors.white')};
+    border-color: ${theme('colors.gray.dark')};
     &:hover {
-      background-color: ${theme.colors.gray.lighter};
-      border-color: ${theme.colors.gray.lighter};
+      background-color: ${theme('colors.gray.lighter')};
+      border-color: ${theme('colors.gray.lighter')};
     }
 
     &.outline {
-      color: ${theme.colors.gray};
-      border-color: ${theme.colors.gray};
+      color: ${theme('colors.gray')};
+      border-color: ${theme('colors.gray')};
       background-color: transparent;
       &:hover {
-        background-color: ${theme.colors.gray};
-        color: ${theme.colors.white};
-        border-color: ${theme.colors.gray};
+        background-color: ${theme('colors.gray')};
+        color: ${theme('colors.white')};
+        border-color: ${theme('colors.gray')};
       }
     }
   }
 
   &.small {
-    font-size: ${theme.font.paragraph.fontSize};
-    line-height: ${theme.font.paragraph.lineHeight};
-    font-weight: ${theme.font.paragraph.fontWeight};
-    padding: ${theme.spacing.tiny};
-    border-radius: ${theme.radius.tiny};
+    font-size: ${theme('font.paragraph.fontSize')};
+    line-height: ${theme('font.paragraph.lineHeight')};
+    font-weight: ${theme('font.paragraph.fontWeight')};
+    padding: ${theme('spacing.tiny')};
+    border-radius: ${theme('radius.tiny')};
   }
 
   &.medium {
-    font-size: ${theme.font.paragraph.fontSize};
-    line-height: ${theme.font.paragraph.lineHeight};
-    font-weight: ${theme.font.paragraph.fontWeight};
-    padding: ${theme.spacing.small} ${theme.spacing.medium};
-    border-radius: ${theme.radius.tiny};
+    font-size: ${theme('font.paragraph.fontSize')};
+    line-height: ${theme('font.paragraph.lineHeight')};
+    font-weight: ${theme('font.paragraph.fontWeight')};
+    padding: ${theme('spacing.small')} ${theme('spacing.medium')};
+    border-radius: ${theme('radius.tiny')};
   }
 
   &.large {
-    font-size: ${theme.font.paragraph.fontSize};
-    line-height: ${theme.font.paragraph.lineHeight};
-    font-weight: ${theme.font.paragraph.fontWeight};
-    padding: ${theme.spacing.medium} ${theme.spacing.large};
-    border-radius: ${theme.radius.tiny};
+    font-size: ${theme('font.paragraph.fontSize')};
+    line-height: ${theme('font.paragraph.lineHeight')};
+    font-weight: ${theme('font.paragraph.fontWeight')};
+    padding: ${theme('spacing.medium')} ${theme('spacing.large')};
+    border-radius: ${theme('radius.tiny')};
   }
 
   &.disabled {
