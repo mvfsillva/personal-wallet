@@ -6,15 +6,21 @@
 
 
 [![CircleCI](https://circleci.com/gh/mvfsillva/personal-wallet.svg?style=svg&circle-token=ae17684f8ec5bfb4a4da30adb4d1558a0266365b)](https://circleci.com/gh/mvfsillva/personal-wallet)
-
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
+[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://storybook.js.org)
 ---
 
-- React 16
-- Next 8
-- Styled Components
-- Server Side Rendering (SSR)
-- zeit/now
-- Circle CI
+- [React 16](https://reactjs.org/)
+- [Next 8](https://nextjs.org/)
+- [Styled Components](https://www.styled-components.com/)
+- [jest](https://jestjs.io/)
+- [XO](https://github.com/xojs/xo)
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [prettier](https://github.com/prettier/prettier)
+- [zeit/now](https://zeit.co/)
+- [Circle CI](https://circleci.com)
 
 ## Contributing
 
@@ -29,6 +35,12 @@ $ yarn
 Create a `.env` file at the root of the project. Make sure you follow the [`.env.example`](.env.example) file as a guide.
 
 ### 03. Run project
+
+```sh
+$ yarn dev
+```
+
+### 04. Run tests
 
 ```sh
 $ yarn test
