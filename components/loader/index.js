@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import { theme } from 'styled-tools'
+
+import theme from '../../theme'
 
 const rotate = keyframes`
   0% {
@@ -17,9 +18,9 @@ const Wrapper = styled.div`
   height: ${props => props.size}px;
   width: ${props => props.size}px;
   animation: ${rotate} 1s infinite linear;
-  border: ${theme('radius.large')} solid ${props => props.palette};
+  border: ${theme.radius.large} solid ${props => props.palette};
   border-right-color: transparent;
-  border-radius: ${theme('radius.rounded')};
+  border-radius: ${theme.radius.rounded};
   margin: auto;
 `
 
@@ -27,7 +28,7 @@ const Loader = ({ size, palette }) => <Wrapper palette={palette} size={size} />
 
 Loader.defaultProps = {
   size: 24,
-  palette: `${theme('colors.primary')}`,
+  palette: `${theme.colors.primary}`,
 }
 
 Loader.propTypes = {
