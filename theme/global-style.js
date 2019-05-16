@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     color: ${theme.colors.black};
+    text-size-adjust: none;
   }
 
   body {
