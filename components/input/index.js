@@ -45,8 +45,9 @@ const Container = styled.div`
 const Input = ({ type, placeholder, name, label, required, value, error, onChange, disabled }) => {
   return (
     <Container>
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={`${name}-input-${type}`}>{label}</Label>}
       <Wrapper
+        id={`${name}-input-${type}`}
         type={type}
         placeholder={placeholder}
         name={name}
