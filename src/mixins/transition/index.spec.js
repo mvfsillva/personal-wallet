@@ -24,11 +24,8 @@ describe('Helper: Transition', () => {
   })
 
   it('should verify of array transitions with polished', () => {
-    expect(
-      transitions([
-        transition({ property: 'color' }),
-        transition({ property: 'background-color' }),
-      ]),
-    ).toEqual({ transition: 'color 150ms ease-out 0ms,background-color 150ms ease-out 0ms' })
+    expect(transitions([transition({ property: 'color' }), transition({ property: 'background-color' })])).toEqual({
+      transition: 'color 150ms ease-out 0ms,background-color 150ms ease-out 0ms',
+    })
   })
 })
