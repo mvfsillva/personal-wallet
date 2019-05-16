@@ -21,7 +21,7 @@ import PersonalWallet from '../icons/wallet'
 
 import config from '../config'
 
-class Login extends PureComponent {
+class Home extends PureComponent {
   state = {
     isLoading: false,
     error: '',
@@ -94,4 +94,4 @@ class Login extends PureComponent {
   }
 }
 
-export default Login
+export default Home
