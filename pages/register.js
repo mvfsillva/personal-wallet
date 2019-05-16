@@ -74,7 +74,7 @@ class Register extends PureComponent {
     return (
       <Container>
         <Main>
-          <div>
+          <div style={{ height: '60vh' }}>
             <PersonalWallet size={70} />
 
             <hgroup style={{ marginTop: '24px' }}>
