@@ -15,6 +15,12 @@
 /.cache
 /public
 
+/src/build
+/src/dist
+/src/.next
+/src/.cache
+/src/public
+
 # misc
 .DS_Store
 npm-debug.log*
