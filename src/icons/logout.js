@@ -5,13 +5,7 @@ import theme from '../theme'
 
 const Logout = ({ size, color }) => {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 471.2 471.2"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width={size} height={size} viewBox="0 0 471.2 471.2" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g>
         <g>
           <path
