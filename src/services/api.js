@@ -10,9 +10,7 @@ const api = baseURL => {
 
   request.interceptors.response.use(
     response => {
-      return response.data
-        ? response.data
-        : response
+      return response.data ? response.data : response
     },
     error => {
       console.error(error)
