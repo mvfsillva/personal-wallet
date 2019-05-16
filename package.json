@@ -13,7 +13,7 @@
     "deploy": "npm run build && npm run export",
     "lint": "xo --quiet",
     "lint:fix": "xo --quiet --write '**/*.js'",
-    "lint:css": "stylelint './components/**/*.js' './styles/**/*.js' './pages/**/*.js'",
+    "lint:css": "stylelint './src/**/*.js'",
     "test": "jest --silent",
     "test:watch": "jest --watch",
     "precommit": "lint-staged",
