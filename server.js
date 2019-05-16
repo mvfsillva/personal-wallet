@@ -1,12 +1,12 @@
 const cacheableResponse = require('cacheable-response')
 const express = require('express')
-const next = require('next')
 const cors = require('cors')
 const axios = require('axios')
+const next = require('next')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const app = next({ dev, dir: './src' })
 
 const handle = app.getRequestHandler()
 
