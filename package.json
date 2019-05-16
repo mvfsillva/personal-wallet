@@ -80,10 +80,10 @@
       "jsx"
     ],
     "moduleNameMapper": {
-      "^config/([^\\.]*)$": "<rootDir>/config/$1"
+      "^config/([^\\.]*)$": "<rootDir>/src/config/$1"
     },
     "setupFilesAfterEnv": [
-      "<rootDir>/config/enzyme.setup.js"
+      "<rootDir>/src/config/enzyme.setup.js"
     ]
   },
   "xo": {
