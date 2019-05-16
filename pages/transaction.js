@@ -3,7 +3,6 @@ import Router from 'next/router'
 import Swal from 'sweetalert2'
 import { Choose, If } from 'react-extras'
 import { toPattern } from 'vanilla-masker'
-import { theme } from 'styled-tools'
 
 import PageTitle from '../components/page-title'
 import Input from '../components/input'
@@ -12,6 +11,8 @@ import Loader from '../components/loader'
 
 import Logged from '../containers/logged'
 import TransactionFilter from '../containers/transaction-filter'
+
+import withAuth from '../hocs/with-auth'
 
 import currencyFormat from '../helpers/currency-format'
 import setEquation from '../helpers/operation'
@@ -157,8 +158,8 @@ class Transaction extends Component {
       text: "You won't be able to revert this!",
       type: 'warning',
       showCancelButton: true,
-      cancelButtonColor: theme('colors.red'),
-      confirmButtonColor: theme('colors.primary'),
+      cancelButtonColor: '#E15554',
+      confirmButtonColor: '#0DB14B',
       confirmButtonText: type === '💵 sell' ? 'sell' : 'Purchase',
     }).then(result => {
       if (result.value) {
@@ -230,4 +231,4 @@ class Transaction extends Component {
   }
 }
 
-export default Transaction
+export default withAuth(Transaction)
