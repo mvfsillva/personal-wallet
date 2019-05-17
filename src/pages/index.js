@@ -4,20 +4,11 @@ import crypto from 'crypto-js'
 import Router from 'next/router'
 import Link from 'next/link'
 
-import Button from '../components/button'
-import Input from '../components/input'
-import Loader from '../components/loader'
-
-import user from '../services/user'
-import cookie from '../services/cookies'
-
-import Either from '../helpers/either'
-
-import Container from '../styles/container'
-import Main from '../styles/main'
-import LinkBlock from '../styles/link-block'
-
-import PersonalWallet from '../icons/wallet'
+import { Button, Input, Loader } from '../components'
+import { user, cookie } from '../services'
+import { Either } from '../helpers'
+import { Container, Main, LinkBlock } from '../styles'
+import { PersonalWallet } from '../icons'
 
 import config from '../config'
 

@@ -8,8 +8,7 @@ import { theme, ifProp } from 'styled-tools'
 
 import transition from '../../mixins/transition'
 
-import PersonalWallet from '../../icons/wallet'
-import Logout from '../../icons/logout'
+import { PersonalWallet, Logout } from '../../icons'
 
 const Wrapper = styled.aside`
   position: fixed;

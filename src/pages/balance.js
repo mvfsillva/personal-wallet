@@ -2,16 +2,10 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { theme } from 'styled-tools'
 
-import Card from '../components/card'
-import PageTitle from '../components/page-title'
-import Loader from '../components/loader'
-
-import Logged from '../containers/logged'
-
-import history from '../services/history'
-
-import Either from '../helpers/either'
-import currencyFormat from '../helpers/currency-format'
+import { Card, PageTitle, Loader } from '../components'
+import { Logged } from '../containers'
+import { history } from '../services'
+import { Either, currencyFormat } from '../helpers'
 
 import withAuth from '../hocs/with-auth'
 

@@ -5,21 +5,11 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 
-import Button from '../components/button'
-import Input from '../components/input'
-import Loader from '../components/loader'
-
-import user from '../services/user'
-import history from '../services/history'
-
-import Either from '../helpers/either'
-import currencyFormat from '../helpers/currency-format'
-
-import Container from '../styles/container'
-import Main from '../styles/main'
-import LinkBlock from '../styles/link-block'
-
-import PersonalWallet from '../icons/wallet'
+import { Button, Input, Loader } from '../components'
+import { user, history } from '../services'
+import { Either, currencyFormat } from '../helpers'
+import { Container, Main, LinkBlock } from '../styles'
+import { PersonalWallet } from '../icons'
 
 class Register extends PureComponent {
   state = {

@@ -3,15 +3,10 @@ import styled from 'styled-components'
 import shortid from 'shortid'
 import { theme } from 'styled-tools'
 
-import PageTitle from '../components/page-title'
-import Loader from '../components/loader'
-
-import Logged from '../containers/logged'
-import HistoryDetail from '../containers/history-detail'
-
-import history from '../services/history'
-
-import Either from '../helpers/either'
+import { PageTitle, Loader } from '../components'
+import { Logged, HistoryDetail } from '../containers'
+import { history } from '../services'
+import { Either } from '../helpers'
 
 import withAuth from '../hocs/with-auth'
 

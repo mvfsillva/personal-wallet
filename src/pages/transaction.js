@@ -4,27 +4,13 @@ import Swal from 'sweetalert2'
 import { Choose, If } from 'react-extras'
 import { toPattern } from 'vanilla-masker'
 
-import PageTitle from '../components/page-title'
-import Input from '../components/input'
-import Button from '../components/button'
-import Loader from '../components/loader'
-
-import Logged from '../containers/logged'
-import TransactionFilter from '../containers/transaction-filter'
+import { PageTitle, Input, Button, Loader } from '../components'
+import { Logged, TransactionFilter } from '../containers'
+import { currencyFormat, setEquation, olindaPromise, date, notification } from '../helpers'
+import { history, api } from '../services'
+import { Content, Block } from '../styles'
 
 import withAuth from '../hocs/with-auth'
-
-import currencyFormat from '../helpers/currency-format'
-import setEquation from '../helpers/operation'
-import olindaPromise from '../helpers/olinda-promise'
-import date from '../helpers/datetime'
-import notification from '../helpers/notification'
-
-import history from '../services/history'
-import api from '../services/api'
-
-import Content from '../styles/content'
-import Block from '../styles/block'
 
 const coins = [{ value: 'brl', label: 'Real' }, { value: 'bta', label: 'Brita' }, { value: 'btc', label: 'Bitcoin' }]
 class Transaction extends Component {
