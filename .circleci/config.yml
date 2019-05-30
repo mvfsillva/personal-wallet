@@ -72,19 +72,19 @@ jobs:
       - persist_to_workspace:
           <<: *to_persist
 
-  deploy:
-      <<: *defaults
-      steps:
-        - attach_workspace:
-            at: ~/workspace
+  # deploy:
+  #     <<: *defaults
+  #     steps:
+  #       - attach_workspace:
+  #           at: ~/workspace
 
-        - run:
-            name: Install NOW CLI
-            command: sudo npm install --global --unsafe-perm now
-        - deploy:
-            name: Deployment NOW
-            command: |
-              now -t ${NOW_TOKEN}
+  #       - run:
+  #           name: Install NOW CLI
+  #           command: sudo npm install --global --unsafe-perm now
+  #       - deploy:
+  #           name: Deployment NOW
+  #           command: |
+  #             now -t ${NOW_TOKEN}
 
 workflows:
   version: 2
@@ -105,6 +105,6 @@ workflows:
             - lint
             - lint_css
             - test
-      - deploy:
-          requires:
-            - build
+      # - deploy:
+      #     requires:
+      #       - build
