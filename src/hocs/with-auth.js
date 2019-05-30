@@ -11,10 +11,9 @@ export default App => {
       const { Component, router, req, res } = ctx // eslint-disable-line no-unused-vars
       try {
         const user = cookie.get(ctx, { parsed: true })
-        console.log(user)
 
         if (user) {
-          const { username, email } = cookie
+          const { username, email } = user
 
           if (req) {
             req.user = { username, email }
