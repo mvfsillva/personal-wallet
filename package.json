@@ -20,7 +20,7 @@
     "storybook": "start-storybook -p 9001"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.5",
     "cacheable-response": "^1.5.2",
     "classnames": "^2.2.6",
